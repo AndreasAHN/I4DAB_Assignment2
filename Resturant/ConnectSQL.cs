@@ -8,7 +8,7 @@ namespace Resturant
     {
         ConnectSQL()
         {
-            string connectionString = "server=84.238.88.212;uid=I4DAB_HandIn2;pwd=I4dab1234;database=I4DAB_HandIn2";
+            string connectionString = "server=84.238.88.212;uid=I4DAB_HandIn2;pwd=I4DaB1234;database=I4DAB_HandIn2";
         }
     }
 }
