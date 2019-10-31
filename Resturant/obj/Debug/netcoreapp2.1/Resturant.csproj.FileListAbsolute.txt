@@ -8,3 +8,14 @@ C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\net
 C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.AssemblyInfo.cs
 C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.dll
 C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.pdb
+C:\4. semester\DAB\I4DAB_ASP\Resturant\bin\Debug\netcoreapp2.1\Resturant.deps.json
+C:\4. semester\DAB\I4DAB_ASP\Resturant\bin\Debug\netcoreapp2.1\Resturant.runtimeconfig.json
+C:\4. semester\DAB\I4DAB_ASP\Resturant\bin\Debug\netcoreapp2.1\Resturant.runtimeconfig.dev.json
+C:\4. semester\DAB\I4DAB_ASP\Resturant\bin\Debug\netcoreapp2.1\Resturant.dll
+C:\4. semester\DAB\I4DAB_ASP\Resturant\bin\Debug\netcoreapp2.1\Resturant.pdb
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.csprojAssemblyReference.cache
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.csproj.CoreCompileInputs.cache
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.AssemblyInfoInputs.cache
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.AssemblyInfo.cs
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.dll
+C:\4. semester\DAB\I4DAB_ASP\Resturant\obj\Debug\netcoreapp2.1\Resturant.pdb
