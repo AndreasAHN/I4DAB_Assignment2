@@ -1,0 +1,10 @@
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\bin\Debug\netcoreapp2.1\Resturant.deps.json
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\bin\Debug\netcoreapp2.1\Resturant.runtimeconfig.json
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\bin\Debug\netcoreapp2.1\Resturant.runtimeconfig.dev.json
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\bin\Debug\netcoreapp2.1\Resturant.dll
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\bin\Debug\netcoreapp2.1\Resturant.pdb
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.csprojAssemblyReference.cache
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.AssemblyInfoInputs.cache
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.AssemblyInfo.cs
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.dll
+C:\Users\andre\source\repos\AndreasAHN\I4DAB_Assignment2\Resturant\obj\Debug\netcoreapp2.1\Resturant.pdb
