@@ -68,13 +68,8 @@ namespace Resturant
                     Console.WriteLine(rest.Name);
 
                     var reviews = db.Review.Where(r => r.Addresse.Equals(rest.Address));
-                    double? rating = 0;
-                    foreach (var review in reviews)
-                    {
-                        rating += review.Stars;
-                    }
-
-                    rating = rating / reviews.Count();
+                    double? rating = (double?)reviews.Average(r => r.Stars);
+                    
                     Console.WriteLine("\t Gennemsnit review: " + rating);
                     foreach (var review in reviews.Take(5))
                     {

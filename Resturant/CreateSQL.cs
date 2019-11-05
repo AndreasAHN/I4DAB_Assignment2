@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Resturant
 {
@@ -13,28 +15,23 @@ namespace Resturant
 
         }
 
-        public void addRestaurant(string address, string name, string type)
+        public void addRestaurant(ref Restaurant restaurant)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var restaurant = new Resturant.Restaurant();
-                restaurant.Address = address;
-                restaurant.Name = name;
-                restaurant.Type = type;
-
+                string addresse = restaurant.Address;
+                if (db.Restaurant.Any(r => r.Address == addresse))
+                    return;
                 db.Restaurant.Add(restaurant);
                 db.SaveChanges();
             }
         }
 
-        public void addReview(int star, string text, Restaurant restaurant)
+        public void addReview(ref Review review, ref Restaurant restaurant)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var review = new Review();
-                review.Stars = star;
-                review.Text = text;
-                review.AddresseNavigation = restaurant;
+                review.Addresse = restaurant.Address;
 
                 db.Review.Add(review);
                 db.SaveChanges();

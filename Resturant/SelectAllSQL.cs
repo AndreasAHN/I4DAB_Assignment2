@@ -18,7 +18,13 @@ namespace Resturant
             using(var db = new I4DAB_HandIn2Context())
             {
                 var resturants = db.Restaurant.ToList();
-
+                foreach (var rest in resturants)
+                {
+                    Console.WriteLine(rest.Name);
+                    Console.WriteLine("Type: "+rest.Type);
+                    Console.WriteLine("Addresse: "+rest.Address);
+                    Console.WriteLine();
+                }
                 return resturants.ToList();
             }
         }

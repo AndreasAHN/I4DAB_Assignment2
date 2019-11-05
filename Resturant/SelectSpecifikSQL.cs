@@ -66,7 +66,8 @@ namespace Resturant
             List<Person> dataOutPut = new List<Person>();
             for (int i = 0; i < dataPerson.Count; i++)
             {
-                if (dataPerson[i].Addresse == resturant.Address)
+                //dataPerson[i].Address == resturant.Address
+                if (true)
                 {
                     dataOutPut.Add(dataPerson[i]);
                     Console.WriteLine(dataPerson[i].ToString());
