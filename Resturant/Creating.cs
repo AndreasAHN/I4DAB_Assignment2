@@ -88,7 +88,27 @@ namespace Resturant
 
         public void addTable(int number, Restaurant restaurant, Waiter waiter)
         {
-            
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                var table = new TableIns();
+                table.Addresse = restaurant.Address;
+                table.Number = number;
+
+
+                var gd = new GuestDish();
+
+
+                //dish.ReviewId = review.ReviewId;
+
+                //var gd = new GuestDish();
+                //gd.Dish = dish;
+                //gd.Guest = guest;
+
+                //guest.GuestDish.Add(gd);
+
+                //db.Guest.Add(guest);
+                //db.SaveChanges();
+            }
         }
 
 
