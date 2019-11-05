@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -39,13 +40,10 @@ namespace Resturant
             }
         }
 
-        public void addDish(double price, string type, Review review, Restaurant restaurant, Guest guest)
+        public void addDish(ref Dish dish, ref Review review, ref Restaurant restaurant, ref Guest guest)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var dish = new Dish();
-                dish.Price = price;
-                dish.Type = type;
 
                 dish.ReviewId = review.ReviewId;
 
@@ -54,24 +52,23 @@ namespace Resturant
                 gd.Guest = guest;
 
                 dish.GuestDish.Add(gd);
-
                 db.Dish.Add(dish);
+
                 db.SaveChanges();
             }
 
 
         }
 
-        public void addGuest(Person person, TableIns table, Review review, Dish dish, DateTime time)
+        public void addGuest(ref Guest guest, ref Person person, ref TableIns table, ref Review review, ref Dish dish)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var guest = new Guest();
-                guest.Reservation = time;
+                
                 guest.ReviewId = review.ReviewId;
                 guest.TableId = table.TableId;
                 guest.FkPersonId = person.PersonId;
-
+                db.Guest.Add(guest);
 
                 dish.ReviewId = review.ReviewId;
 
@@ -81,21 +78,18 @@ namespace Resturant
 
                 guest.GuestDish.Add(gd);
 
-                db.Guest.Add(guest);
+               
                 db.SaveChanges();
             }
 
 
         }
 
-        public void addTable(int number, Restaurant restaurant, Waiter waiter)
+        public void addTable(ref TableIns table, ref Restaurant restaurant, ref Waiter waiter)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var table = new TableIns();
                 table.Addresse = restaurant.Address;
-                table.Number = number;
-
 
                 var waiterTable = new WaiterTableIns();
 
@@ -108,12 +102,10 @@ namespace Resturant
             }
         }
 
-        public void addWaiter(int salary, Person person, TableIns table)
+        public void addWaiter(ref Waiter waiter, Person person, TableIns table)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var waiter = new Waiter();
-                waiter.Salary = salary;
                 waiter.PersonId = person.PersonId;
 
                 var waiterTable = new WaiterTableIns();
@@ -127,15 +119,12 @@ namespace Resturant
             }
         }
 
-        public void addPerson(string name)
+        public void addPerson(ref Person person)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var person = new Person();
-                person.Name = name;
                 db.Person.Add(person);
                 db.SaveChanges();
-
 
             }
         }
