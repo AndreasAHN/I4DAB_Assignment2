@@ -6,7 +6,9 @@ namespace Resturant
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            SelectAllSQL selectAllSQL = new SelectAllSQL();
+            var data = selectAllSQL.SelectAllResturant();
+            Console.WriteLine(data[0].ToString());
         }
     }
 }
