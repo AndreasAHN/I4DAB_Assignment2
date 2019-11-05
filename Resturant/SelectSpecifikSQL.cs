@@ -17,16 +17,26 @@ namespace Resturant
         public List<Review> selectReview(Restaurant resturant)
         {
             List<Review> dataReviews = selectAllSQL.SelectAllReview();
-            List<Review> dataOutPut = new List<Review>();
-            for (int i = 0; i < dataReviews.Count; i++)
+            List<Review> dataOutPut;// = new List<Review>();
+            //for (int i = 0; i < dataReviews.Count; i++)
+            //{
+            //    if(dataReviews[i].Addresse == resturant.Address)
+            //    {
+            //        dataOutPut.Add(dataReviews[i]);
+            //        Console.WriteLine(dataReviews[i].ToString());
+            //    }
+            //}
+
+            using (var db = new I4DAB_HandIn2Context())
             {
-                if(dataReviews[i].Addresse == resturant.Address)
-                {
-                    dataOutPut.Add(dataReviews[i]);
-                    Console.WriteLine(dataReviews[i].ToString());
-                }
+                dataOutPut = db.Review.Where(reviewOut => reviewOut.Addresse.StartsWith(resturant.Address)).ToList();
             }
-            
+
+            for (int i = 0; i < dataOutPut.Count; i++)
+            {
+                Console.WriteLine(dataOutPut[i].ToString());
+            }
+
             return dataOutPut;
         }
 
@@ -43,6 +53,8 @@ namespace Resturant
                     Console.WriteLine(dataTableIns[i].ToString());
                 }
             }
+
+
 
             return dataOutPut;
         }
