@@ -100,19 +100,46 @@ namespace Resturant
                 table.Number = number;
 
 
-                var gd = new GuestDish();
+                var waiterTable = new WaiterTableIns();
+
+                waiterTable.TableId = table.TableId;
+                waiterTable.WaiterId = waiter.WaiterId;
+                db.TableIns.Add(table);
+                db.WaiterTableIns.Add(waiterTable);
+                db.SaveChanges();
+               
+            }
+        }
+
+        public void addWaiter(int salary, Person person, TableIns table)
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                var waiter = new Waiter();
+                waiter.Salary = salary;
+                waiter.PersonId = person.PersonId;
+
+                var waiterTable = new WaiterTableIns();
+                waiterTable.TableId = table.TableId;
+                waiterTable.WaiterId = waiter.WaiterId;
+
+                db.Waiter.Add(waiter);
+                db.WaiterTableIns.Add(waiterTable);
+                db.SaveChanges();
+
+            }
+        }
+
+        public void addPerson(string name)
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                var person = new Person();
+                person.Name = name;
+                db.Person.Add(person);
+                db.SaveChanges();
 
 
-                //dish.ReviewId = review.ReviewId;
-
-                //var gd = new GuestDish();
-                //gd.Dish = dish;
-                //gd.Guest = guest;
-
-                //guest.GuestDish.Add(gd);
-
-                //db.Guest.Add(guest);
-                //db.SaveChanges();
             }
         }
 
