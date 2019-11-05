@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 
@@ -83,6 +84,11 @@ namespace Resturant
             }
 
 
+        }
+
+        public void addTable(int number, Restaurant restaurant, Waiter waiter)
+        {
+            
         }
 
 
