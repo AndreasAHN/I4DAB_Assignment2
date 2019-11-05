@@ -84,5 +84,14 @@ namespace Resturant
                 }
             }
         }
+
+
+        public void getReviewsBasedOnTable()
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+
+            }
+        }
     }
 }
