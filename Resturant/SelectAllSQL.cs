@@ -19,7 +19,7 @@ namespace Resturant
             {
                 var resturants = db.Restaurant.ToList();
 
-                return resturants;
+                return resturants.ToList();
             }
         }
 
@@ -39,7 +39,7 @@ namespace Resturant
             {
                 var dish = db.Dish.ToList();
 
-                return dish;
+                return dish.ToList();
             }
         }
 
@@ -49,7 +49,7 @@ namespace Resturant
             {
                 var guest = db.Guest.ToList();
 
-                return guest;
+                return guest.ToList();
             }
         }
 
@@ -59,7 +59,7 @@ namespace Resturant
             {
                 var person = db.Person.ToList();
 
-                return person;
+                return person.ToList();
             }
         }
 
@@ -69,7 +69,7 @@ namespace Resturant
             {
                 var waiter = db.Waiter.ToList();
 
-                return waiter;
+                return waiter.ToList();
             }
         }
 
@@ -79,7 +79,7 @@ namespace Resturant
             {
                 var tableIns = db.TableIns.ToList();
 
-                return tableIns;
+                return tableIns.ToList();
             }
         }
 
@@ -89,7 +89,7 @@ namespace Resturant
             {
                 var waiterTableIns = db.WaiterTableIns.ToList();
 
-                return waiterTableIns;
+                return waiterTableIns.ToList();
             }
         }
     }
