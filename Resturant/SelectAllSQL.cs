@@ -13,7 +13,7 @@ namespace Resturant
 
         }
 
-        public List<Restaurant> ReadResturant()
+        public List<Restaurant> SelectAllResturant()
         {
             using(var db = new I4DAB_HandIn2Context())
             {
@@ -23,7 +23,7 @@ namespace Resturant
             }
         }
 
-        public List<Review> ReadReview()
+        public List<Review> SelectAllReview()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
@@ -33,7 +33,7 @@ namespace Resturant
             }
         }
 
-        public List<Dish> ReadDish()
+        public List<Dish> SelectAllDish()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
@@ -43,7 +43,7 @@ namespace Resturant
             }
         }
 
-        public List<Guest> ReadGuest()
+        public List<Guest> SelectAllGuest()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
@@ -53,7 +53,7 @@ namespace Resturant
             }
         }
 
-        public List<Person> ReadPerson()
+        public List<Person> SelectAllPerson()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
@@ -73,7 +73,7 @@ namespace Resturant
             }
         }
 
-        public List<TableIns> ReadTable()
+        public List<TableIns> SelectAllTable()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
@@ -83,7 +83,7 @@ namespace Resturant
             }
         }
 
-        public List<WaiterTableIns> ReadWaiterTablelns()
+        public List<WaiterTableIns> SelectAllWaiterTablelns()
         {
             using (var db = new I4DAB_HandIn2Context())
             {
