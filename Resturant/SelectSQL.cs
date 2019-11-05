@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Xml;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Resturant
 {
@@ -50,6 +54,35 @@ namespace Resturant
 
 
             return average;
+        }
+
+
+        public void getAllWithType(string type)
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                List<Restaurant> restlist = db.Restaurant.Where(t => t.Type.Equals(type)).ToList();
+                Console.WriteLine("Restaurants with type "+type+":");
+                foreach (var rest in restlist)
+                {
+                    Console.WriteLine(rest.Name);
+
+                    var reviews = db.Review.Where(r => r.Addresse.Equals(rest.Address));
+                    double? rating = 0;
+                    foreach (var review in reviews)
+                    {
+                        rating += review.Stars;
+                    }
+
+                    rating = rating / reviews.Count();
+                    Console.WriteLine("\t Gennemsnit review: " + rating);
+                    foreach (var review in reviews.Take(5))
+                    {
+                        Console.WriteLine("\tReview: "+review.Text);
+                    }
+                    Console.WriteLine("--------");
+                }
+            }
         }
     }
 }
