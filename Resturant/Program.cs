@@ -1,4 +1,5 @@
 ﻿using System;
+using Resturant.Models;
 
 namespace Resturant
 {
@@ -31,7 +32,7 @@ namespace Resturant
             create.addWaiter(ref waiter,ref person);
             create.addTable(ref table,ref rest,ref waiter);
             create.addGuest(ref guest,ref person,ref table,ref review);
-            create.addDish(ref dish, ref rest);
+            //create.addDish(ref dish, ref rest);
 
             select.getReviewsBasedOnTable("Randersvej 19");
 

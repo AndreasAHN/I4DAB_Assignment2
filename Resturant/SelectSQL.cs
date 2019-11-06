@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Xml;
 using Microsoft.EntityFrameworkCore.Internal;
+using Resturant.Models;
 
 namespace Resturant
 {
@@ -48,20 +49,21 @@ namespace Resturant
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
-                Console.WriteLine("Menu for restaurant "+rest.Name+":");
+                var rest = db.Restaurant.Where(r => r.Address.Equals(address));
+                Console.WriteLine("Menu for restaurant "+rest.First().Name+":");
                 //var rd = from redi in RestaurantDish
                 //var rd = rest.RestaurantDish.Where(r => r.Addresse.Equals(address));
-
-                var dishes = from di in rest.RestaurantDish select di.Dish;
-
+                var dishesid = db.RestaurantDish.Where(r => r.Addresse.Equals(address));
+                var dishes = from rd in dishesid select rd.Dish;
+                
                 foreach (var dish in dishes)
                 {
                     Console.WriteLine("\t"+dish.Type);
                     Console.WriteLine("\t" + dish.Price+" kr.");
 
-                    var reviews = db.Review.Where(r => r.Dish.Contains(dish));
-                    Console.WriteLine("\tGennemsnit rating: "+reviews.Average(s => s.Stars));
+                    //var reviewsid = db.Dish.Where(r => r.ReviewId =)
+                    //var reviews = from r in reviewsid select r.
+                    //Console.WriteLine("\tGennemsnit rating: "+reviews.Average(s => s.Stars));
                     Console.WriteLine();
                 }
 

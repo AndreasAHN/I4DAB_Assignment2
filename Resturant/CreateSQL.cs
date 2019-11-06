@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Internal;
+using Resturant.Models;
 
 namespace Resturant
 {

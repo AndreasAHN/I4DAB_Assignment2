@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Resturant
+namespace Resturant.Models
 {
     public partial class Waiter
     {

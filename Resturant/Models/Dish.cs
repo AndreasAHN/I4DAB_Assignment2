@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Resturant
+namespace Resturant.Models
 {
     public partial class Dish
     {
@@ -14,6 +14,7 @@ namespace Resturant
         public int DishId { get; set; }
         public int? ReviewId { get; set; }
         public double Price { get; set; }
+        public string Name { get; set; }
         public string Type { get; set; }
 
         public Review Review { get; set; }
