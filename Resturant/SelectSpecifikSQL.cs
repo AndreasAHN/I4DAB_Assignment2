@@ -19,8 +19,12 @@ namespace Resturant
 
         public Restaurant getRestaurant(string addresse)
         {
-            return db.Restaurant.Where(r => r.Address == addresse).First();
+            var dataOut = db.Restaurant.Where(r => r.Address == addresse).First();
+            Console.WriteLine(dataOut.ToString());
+            return dataOut;
+
         }
+
         public List<Review> selectReview(Restaurant resturant)
         {
             //List<Review> dataReviews = selectAllSQL.SelectAllReview();
@@ -72,8 +76,7 @@ namespace Resturant
 
             using (var db = new I4DAB_HandIn2Context())
             {
-                //dataOutPut = from item in db.Person where item.PersonId == id select item.PersonId;
-                dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList(); //.Select(personOut => personOut.PersonId)
+                dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList();
             }
 
             Console.WriteLine(dataOutPut[0].ToString());
@@ -88,7 +91,7 @@ namespace Resturant
 
             using (var db = new I4DAB_HandIn2Context())
             {
-                dataOutPut = db.Waiter.Where(waiterOut => waiterOut.PersonId == person.PersonId).ToList();//.Select(personOut => personOut.PersonId).ToList();
+                dataOutPut = db.Waiter.Where(waiterOut => waiterOut.PersonId == person.PersonId).ToList();
             }
 
             for (int i = 0; i < dataOutPut.Count; i++)
@@ -113,5 +116,67 @@ namespace Resturant
 
             return dataOutPut;
         }
+
+        public List<Guest> selectGuest(Review review, TableIns tableIns)
+        {
+            List<Guest> dataOutPut = new List<Guest>();
+
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                dataOutPut = db.Guest.Where(guestOut => ((guestOut.ReviewId == review.ReviewId) && (guestOut.TableId == tableIns.TableId))).ToList();
+            }
+
+            Console.WriteLine(dataOutPut.ToString());
+
+            return dataOutPut;
+        }
+
+
+        public List<Dish> selectDish(Review review)
+        {
+            List<Dish> dataOutPut = new List<Dish>();
+
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                dataOutPut = db.Dish.Where(dishOut => dishOut.Review == review).ToList();
+            }
+
+            for (int i = 0; i < dataOutPut.Count; i++)
+            {
+                Console.WriteLine(dataOutPut[i].ToString());
+            }
+
+            return dataOutPut;
+        }
+
+
+        public List<GuestDish> selectGuest(Guest guest, Dish dish)
+        {
+            List<GuestDish> dataOutPut = new List<GuestDish>();
+
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                dataOutPut = db.GuestDish.Where(guestDishOut => ((guestDishOut.GuestId == guest.GuestId) && (guestDishOut.DishId == dish.DishId))).ToList();
+            }
+
+            Console.WriteLine(dataOutPut.ToString());
+
+            return dataOutPut;
+        }
+
+        public List<RestaurantDish> selectGuest(Restaurant restaurant, Dish dish)
+        {
+            List<RestaurantDish> dataOutPut = new List<RestaurantDish>();
+
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                dataOutPut = db.RestaurantDish.Where(restaurantDishOut => ((restaurantDishOut.Addresse == restaurant.Address) && (restaurantDishOut.DishId == dish.DishId))).ToList();
+            }
+
+            Console.WriteLine(dataOutPut.ToString());
+
+            return dataOutPut;
+        }
+
     }
 }
