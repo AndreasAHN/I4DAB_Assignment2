@@ -12,19 +12,21 @@ namespace Resturant
 {
     class CreateSQL
     {
-        public CreateSQL()
-        {
+        private I4DAB_HandIn2Context db;
 
+        public CreateSQL(I4DAB_HandIn2Context db_)
+        {
+            db = db_;
         }
 
-        private I4DAB_HandIn2Context db = new I4DAB_HandIn2Context();
+        
 
         public void addRestaurant(ref Restaurant restaurant)
         {
             
                 string addresse = restaurant.Address;
-                if (db.Restaurant.Any(r => r.Address == addresse))
-                    return;
+                //if (db.Restaurant.Any(r => r.Address == addresse))
+                    //return;
                 db.Restaurant.Add(restaurant);
                 db.SaveChanges();
             
@@ -32,8 +34,11 @@ namespace Resturant
 
         public void addReview(ref Review review, ref Restaurant restaurant, ref Dish dish)
         {
-                review.Addresse = restaurant.Address;
+                review.Dish = dish;
+                review.AddresseNavigation = restaurant;
+                
                 db.Review.Add(review);
+                dish.Review.Add(review);
                 db.SaveChanges();
 
         }

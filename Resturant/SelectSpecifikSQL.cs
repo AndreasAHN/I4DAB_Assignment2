@@ -6,15 +6,21 @@ using Resturant.Models;
 
 namespace Resturant
 {
-    class SelectSpecifikSQL
+    public class SelectSpecifikSQL
     {
         public SelectAllSQL selectAllSQL;
+        private I4DAB_HandIn2Context db;
 
-        SelectSpecifikSQL()
+        public SelectSpecifikSQL(I4DAB_HandIn2Context db_)
         {
+            db = db_;
             selectAllSQL = new SelectAllSQL();
         }
 
+        public Restaurant getRestaurant(string addresse)
+        {
+            return db.Restaurant.Where(r => r.Address == addresse).First();
+        }
         public List<Review> selectReview(Restaurant resturant)
         {
             //List<Review> dataReviews = selectAllSQL.SelectAllReview();

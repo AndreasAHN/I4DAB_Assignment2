@@ -7,7 +7,7 @@ using Resturant.Models;
 
 namespace Resturant
 {
-    class SelectAllSQL
+    public class SelectAllSQL
     {
         public SelectAllSQL()
         {

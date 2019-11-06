@@ -58,8 +58,20 @@ namespace Resturant
                 
                 foreach (var dish in dishes)
                 {
+                    Console.WriteLine("\t"+dish.Name);
                     Console.WriteLine("\t"+dish.Type);
                     Console.WriteLine("\t" + dish.Price+" kr.");
+
+                    var reviews = db.Review.Where(r => r.DishId == dish.DishId);
+                    Console.WriteLine("\t"+reviews.Average(r => r.Stars)+" stjerner");
+                    //foreach (var review in dish.Review)
+                    //{
+                    //    Console.WriteLine(review.DishId+" "+review.Stars);
+                    //}
+
+                    //Console.WriteLine("\t"+dish.Review.FirstOrDefault());
+
+                    //Console.WriteLine("\t"+dish.Review.Average(r => r.Stars));
 
                     //var reviewsid = db.Dish.Where(r => r.ReviewId =)
                     //var reviews = from r in reviewsid select r.
