@@ -66,9 +66,13 @@ namespace Resturant
 
             //var guest2 = db.Guest.Take(1).First();
             var rd = new RestaurantDish();
-            rd.Addresse = restaurant.Address;
-            rd.DishId = dish.DishId;
-
+            rd.Dish = dish;
+            rd.AddresseNavigation = restaurant;
+            //rd.Addresse = restaurant.Address;
+            //rd.DishId = dish.DishId;
+            db.RestaurantDish.Add(rd);
+            restaurant.RestaurantDish.Add(rd);
+            dish.RestaurantDish.Add(rd);
             db.SaveChanges();
 
 

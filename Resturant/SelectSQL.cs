@@ -50,9 +50,10 @@ namespace Resturant
             {
                 var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
                 Console.WriteLine("Menu for restaurant "+rest.Name+":");
-                var rd = rest.RestaurantDish.Where(r => r.Addresse.Equals(address));
+                //var rd = from redi in RestaurantDish
+                //var rd = rest.RestaurantDish.Where(r => r.Addresse.Equals(address));
 
-                var dishes = from di in rd select di.Dish;
+                var dishes = from di in rest.RestaurantDish select di.Dish;
 
                 foreach (var dish in dishes)
                 {

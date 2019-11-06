@@ -17,7 +17,7 @@ namespace Resturant
             var guest = new Guest() {Reservation = DateTime.Now};
             var dish = new Dish() {Price = 40, Type = "Dessert"};
 
-            var rest = new Restaurant(){Address = "Randersvej 6",Name = "Restaurant2",Type = "Buffet"};
+            var rest = new Restaurant(){Address = "Randersvej 21",Name = "Restaurant2",Type = "Buffet"};
             var review = new Review() {Text = "Det var godt", Stars = 5};
 
             create.addRestaurant(ref rest);
@@ -33,10 +33,10 @@ namespace Resturant
             create.addGuest(ref guest,ref person,ref table,ref review);
             create.addDish(ref dish, ref rest);
 
-            select.getReviewsBasedOnTable("Randersvej 6");
+            select.getReviewsBasedOnTable("Randersvej 19");
 
 
-            select.SelectRestaurantMenu2("Randersvej 6");
+            select.SelectRestaurantMenu2("Randersvej 21");
             Console.ReadLine();
             
             //SelectAllSQL selectAllSQL = new SelectAllSQL();

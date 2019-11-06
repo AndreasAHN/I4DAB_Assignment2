@@ -12,7 +12,7 @@ namespace Resturant
         }
 
         public int DishId { get; set; }
-        public int ReviewId { get; set; }
+        public int? ReviewId { get; set; }
         public double Price { get; set; }
         public string Type { get; set; }
 
