@@ -30,19 +30,16 @@ namespace Resturant
             
         }
 
-        public void addReview(ref Review review, ref Restaurant restaurant)
+        public void addReview(ref Review review, ref Restaurant restaurant, ref Dish dish)
         {
-            review.Addresse = restaurant.Address;
-
+                review.Addresse = restaurant.Address;
                 db.Review.Add(review);
                 db.SaveChanges();
 
         }
 
-        public void addDish(ref Dish dish, ref Review review, ref Restaurant restaurant, ref Guest guest)
+        public void addDish(ref Dish dish, ref Restaurant restaurant, ref Guest guest)
         {
-
-            dish.ReviewId = review.ReviewId;
                 db.Dish.Add(dish);
                 db.SaveChanges();
 

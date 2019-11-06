@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Resturant.Models;
 
-namespace Resturant
+namespace Resturant.Models
 {
     public partial class I4DAB_HandIn2Context : DbContext
     {
@@ -50,24 +49,17 @@ namespace Resturant
 
                 entity.Property(e => e.Price).HasColumnName("price");
 
-                entity.Property(e => e.ReviewId).HasColumnName("review_id");
-
                 entity.Property(e => e.Type)
                     .IsRequired()
                     .HasColumnName("type")
                     .HasMaxLength(255)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.Review)
-                    .WithMany(p => p.Dish)
-                    .HasForeignKey(d => d.ReviewId)
-                    .HasConstraintName("FK__Dish__review_id__520F23F5");
             });
 
             modelBuilder.Entity<Guest>(entity =>
             {
                 entity.HasIndex(e => e.FkPersonId)
-                    .HasName("UQ__Guest__FE913B9FA173B27A")
+                    .HasName("UQ__Guest__FE913B9F1415EBD3")
                     .IsUnique();
 
                 entity.Property(e => e.GuestId).HasColumnName("guest_id");
@@ -85,19 +77,19 @@ namespace Resturant
                 entity.HasOne(d => d.FkPerson)
                     .WithOne(p => p.Guest)
                     .HasForeignKey<Guest>(d => d.FkPersonId)
-                    .HasConstraintName("FK__Guest__fk_person__4F32B74A");
+                    .HasConstraintName("FK__Guest__fk_person__0559BDD1");
 
                 entity.HasOne(d => d.Review)
                     .WithMany(p => p.Guest)
                     .HasForeignKey(d => d.ReviewId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Guest__review_id__4D4A6ED8");
+                    .HasConstraintName("FK__Guest__review_id__0371755F");
 
                 entity.HasOne(d => d.Table)
                     .WithMany(p => p.Guest)
                     .HasForeignKey(d => d.TableId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Guest__table_id__4E3E9311");
+                    .HasConstraintName("FK__Guest__table_id__04659998");
             });
 
             modelBuilder.Entity<GuestDish>(entity =>
@@ -112,13 +104,13 @@ namespace Resturant
                     .WithMany(p => p.GuestDish)
                     .HasForeignKey(d => d.DishId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__GuestDish__dish___55DFB4D9");
+                    .HasConstraintName("FK__GuestDish__dish___092A4EB5");
 
                 entity.HasOne(d => d.Guest)
                     .WithMany(p => p.GuestDish)
                     .HasForeignKey(d => d.GuestId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__GuestDish__guest__54EB90A0");
+                    .HasConstraintName("FK__GuestDish__guest__08362A7C");
             });
 
             modelBuilder.Entity<Person>(entity =>
@@ -169,13 +161,13 @@ namespace Resturant
                     .WithMany(p => p.RestaurantDish)
                     .HasForeignKey(d => d.Addresse)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Restauran__addre__58BC2184");
+                    .HasConstraintName("FK__Restauran__addre__0C06BB60");
 
                 entity.HasOne(d => d.Dish)
                     .WithMany(p => p.RestaurantDish)
                     .HasForeignKey(d => d.DishId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Restauran__dish___59B045BD");
+                    .HasConstraintName("FK__Restauran__dish___0CFADF99");
             });
 
             modelBuilder.Entity<Review>(entity =>
@@ -187,6 +179,8 @@ namespace Resturant
                     .HasColumnName("addresse")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.DishId).HasColumnName("dish_id");
 
                 entity.Property(e => e.Stars)
                     .HasColumnName("stars")
@@ -202,7 +196,12 @@ namespace Resturant
                     .WithMany(p => p.Review)
                     .HasForeignKey(d => d.Addresse)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Review__addresse__3D14070F");
+                    .HasConstraintName("FK__Review__addresse__7246E95D");
+
+                entity.HasOne(d => d.Dish)
+                    .WithMany(p => p.Review)
+                    .HasForeignKey(d => d.DishId)
+                    .HasConstraintName("FK__Review__dish_id__733B0D96");
             });
 
             modelBuilder.Entity<TableIns>(entity =>
@@ -223,13 +222,13 @@ namespace Resturant
                     .WithMany(p => p.TableIns)
                     .HasForeignKey(d => d.Addresse)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__TableIns__addres__3FF073BA");
+                    .HasConstraintName("FK__TableIns__addres__76177A41");
             });
 
             modelBuilder.Entity<Waiter>(entity =>
             {
                 entity.HasIndex(e => e.PersonId)
-                    .HasName("UQ__Waiter__543848DE486AEF2D")
+                    .HasName("UQ__Waiter__543848DE359D21B2")
                     .IsUnique();
 
                 entity.Property(e => e.WaiterId).HasColumnName("waiter_id");
@@ -241,7 +240,7 @@ namespace Resturant
                 entity.HasOne(d => d.Person)
                     .WithOne(p => p.Waiter)
                     .HasForeignKey<Waiter>(d => d.PersonId)
-                    .HasConstraintName("FK__Waiter__person_i__45A94D10");
+                    .HasConstraintName("FK__Waiter__person_i__7BD05397");
             });
 
             modelBuilder.Entity<WaiterTableIns>(entity =>
@@ -256,13 +255,13 @@ namespace Resturant
                     .WithMany(p => p.WaiterTableIns)
                     .HasForeignKey(d => d.TableId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__WaiterTab__Table__4979DDF4");
+                    .HasConstraintName("FK__WaiterTab__Table__7FA0E47B");
 
                 entity.HasOne(d => d.Waiter)
                     .WithMany(p => p.WaiterTableIns)
                     .HasForeignKey(d => d.WaiterId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__WaiterTab__waite__4885B9BB");
+                    .HasConstraintName("FK__WaiterTab__waite__7EACC042");
             });
         }
     }
