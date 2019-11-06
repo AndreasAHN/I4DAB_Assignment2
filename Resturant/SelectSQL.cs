@@ -81,11 +81,39 @@ namespace Resturant
         }
 
 
-        public void getReviewsBasedOnTable()
+        public void getReviewsBasedOnTable(string addresse)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
+                var rest = db.Restaurant.Where(r => r.Address.Equals(addresse)).First();
+                Console.WriteLine("Restaurant "+rest.Name+":");
 
+                var tables = db.TableIns.Where(t => t.Addresse.Equals(addresse));
+
+                foreach (var table in tables)
+                {
+                    Console.WriteLine("\tBord "+table.Number+":");
+
+                    var guests = db.Guest.Where(g => g.TableId == table.TableId);
+                    foreach (var guest in guests)
+                    {
+                        Console.WriteLine("\t\tGæst ved "+guest.Reservation+":");
+                        Console.Write("\t\tHar spist ");
+
+                        var dishnumbers = db.GuestDish.Where(d => d.GuestId == guest.GuestId);
+                        var dishes = from dn in dishnumbers select dn.Dish;
+                        foreach (var dish in dishes)
+                        {
+                            Console.Write(dish.Type+", ");
+                        }
+                        Console.WriteLine();
+
+                        Console.WriteLine("\t\tReview: ");
+                        var review = db.Review.Where(r => r.ReviewId == guest.ReviewId).First();
+                        Console.WriteLine("\t\t"+review.Text+", "+review.Stars);
+
+                    }
+                }
             }
         }
     }
