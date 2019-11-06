@@ -31,10 +31,14 @@ namespace Resturant
             create.addWaiter(ref waiter,ref person);
             create.addTable(ref table,ref rest,ref waiter);
             create.addGuest(ref guest,ref person,ref table,ref review);
-            create.addDish(ref dish, ref review, ref rest,ref guest);
+            create.addDish(ref dish, ref rest);
 
             select.getReviewsBasedOnTable("Randersvej 6");
+
+
+            select.SelectRestaurantMenu2("Randersvej 6");
             Console.ReadLine();
+            
             //SelectAllSQL selectAllSQL = new SelectAllSQL();
             //var data = selectAllSQL.SelectAllResturant();
             //Console.WriteLine(data[0].ToString());

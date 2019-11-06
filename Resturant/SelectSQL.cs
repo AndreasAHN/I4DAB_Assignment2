@@ -33,21 +33,39 @@ namespace Resturant
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                foreach(var rest in db.Restaurant)
-                {
-                    if(rest.Address == address)
-                    {
-                        foreach(var dish in rest.RestaurantDish)
+                var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
+
+                        foreach (var dish in rest.RestaurantDish)
                         {
-                            Console.WriteLine("Type:{0}",dish.Dish.Type);
-                            Console.WriteLine("Price:{0:0.00}",dish.Dish.Price);
+                            Console.WriteLine("Type:{0}", dish.Dish.Type);
+                            Console.WriteLine("Price:{0:0.00}", dish.Dish.Price);
 
                         }
-                    }
-                }
             }
         }
 
+        public void SelectRestaurantMenu2(string address)
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
+                Console.WriteLine("Menu for restaurant "+rest.Name+":");
+                var rd = rest.RestaurantDish.Where(r => r.Addresse.Equals(address));
+
+                var dishes = from di in rd select di.Dish;
+
+                foreach (var dish in dishes)
+                {
+                    Console.WriteLine("\t"+dish.Type);
+                    Console.WriteLine("\t" + dish.Price+" kr.");
+
+                    var reviews = db.Review.Where(r => r.Dish.Contains(dish));
+                    Console.WriteLine("\tGennemsnit rating: "+reviews.Average(s => s.Stars));
+                    Console.WriteLine();
+                }
+
+            }
+        }
         double ReviewAverage()
         {
             double average = 0;

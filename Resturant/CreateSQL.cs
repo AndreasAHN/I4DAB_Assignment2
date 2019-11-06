@@ -58,6 +58,22 @@ namespace Resturant
 
             }
 
+        public void addDish(ref Dish dish, ref Restaurant restaurant)
+        {
+
+            db.Dish.Add(dish);
+            db.SaveChanges();
+
+            //var guest2 = db.Guest.Take(1).First();
+            var rd = new RestaurantDish();
+            rd.Addresse = restaurant.Address;
+            rd.DishId = dish.DishId;
+
+            db.SaveChanges();
+
+
+        }
+
         public void addGuest(ref Guest guest, ref Person person, ref TableIns table, ref Review review)
         {
 
