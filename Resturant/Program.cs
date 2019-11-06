@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Resturant.Models;
 
 namespace Resturant
@@ -68,7 +69,28 @@ namespace Resturant
             if(Console.ReadLine().Equals("j"))
                 select.SelectRestaurantMenu2(nyrest.Address);
 
-            Console.WriteLine("Vil du tilføje");
+            Console.WriteLine("Vil du tilføje et review til en af dishes? Skriv (j) for ja eller (n) for nej");
+            while (Console.ReadLine().Equals("j"))
+            {
+                select.SelectRestaurantMenu2(nyrest.Address);
+                Console.WriteLine("Skriv navn på dish");
+                string name = Console.ReadLine();
+                var dish = db.Dish.Where(d => d.Name.Equals(name)).FirstOrDefault();
+                Console.WriteLine("Udført");
+                Console.Write("Skriv tekst");
+                string tekst = Console.ReadLine();
+                Console.Write("Skriv antal stjerner");
+                int stars = int.Parse(Console.ReadLine());
+                var review = new Review() {Text = tekst, Stars = stars};
+
+                create.addReview(ref review,ref nyrest,ref dish);
+                Console.WriteLine("Fuldført");
+                Console.WriteLine("Vil du skrive nyt review? (j) for ja, og (n) for nej");
+            }
+            
+            Console.WriteLine("Vil du se menuen med de nye reviews? (j) for ja, og (n) for nej");
+            if(Console.ReadLine().Equals("j"))
+                select.SelectRestaurantMenu2(nyrest.Address);
             Console.ReadLine();
 
             Console.ReadLine();
@@ -80,7 +102,7 @@ namespace Resturant
 
             //var rest = new Restaurant(){Address = "Randersvej 42",Name = "Restaurant2",Type = "Buffet"};
             //var rest = selectspecific.getRestaurant("Randersvej 42");
-            var review = new Review() {Text = "Det var godt", Stars = 3};
+            //var review = new Review() {Text = "Det var godt", Stars = 3};
             var review2 = new Review() { Text = "Det var ok", Stars = 2};
 
             //create.addRestaurant(ref rest);
