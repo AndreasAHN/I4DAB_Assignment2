@@ -351,37 +351,113 @@ namespace Resturant
 
                                     case "addPerson":
                                         var person = new Person() { Name = "Henrik" };
+                                        try
+                                        {
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed save person");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "showPerson":
                                         int id = 0;
-                                        selectspecific.selectPerson(id);
+                                        try
+                                        {
+                                            selectspecific.selectPerson(id);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed loading person");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "addWaiter":
                                         var waiter = new Waiter() { Salary = 150 };
+                                        try
+                                        {
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed save waiter");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "showWaiter":
                                         int idPerson = 0;
-                                        Person personBuf = selectspecific.selectPerson(idPerson);
-                                        selectspecific.selectWaiter(personBuf);
+                                        try
+                                        {
+                                            Person personBuf = selectspecific.selectPerson(idPerson);
+                                            selectspecific.selectWaiter(personBuf);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed loading watier");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "addTable":
                                         var table = new TableIns() { Number = 7 };
+                                        try
+                                        {
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed save table");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "showTable":
-                                        selectspecific.selectTableIns(nyrest);
+                                        try
+                                        {
+                                            selectspecific.selectTableIns(nyrest);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed loading table");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "addGuest":
                                         var guest = new Guest() { Reservation = DateTime.Now };
+                                        try
+                                        {
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed save guest");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
 
                                     case "showGuest":
-                                        //selectspecific.selectGuest();
+                                        try
+                                        {
+                                            //selectspecific.selectGuest();
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed loading guest");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
                                         break;
                                 }
                                 break;
