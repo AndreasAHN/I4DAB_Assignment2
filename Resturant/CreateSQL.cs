@@ -1,146 +1,144 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
+using Resturant.Models;
 
 namespace Resturant
 {
     class CreateSQL
     {
-        public CreateSQL()
-        {
+        private I4DAB_HandIn2Context db;
 
+        public CreateSQL(I4DAB_HandIn2Context db_)
+        {
+            db = db_;
         }
 
-        public void addRestaurant(string address, string name, string type)
-        {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var restaurant = new Resturant.Restaurant();
-                restaurant.Address = address;
-                restaurant.Name = name;
-                restaurant.Type = type;
+        
 
+        public void addRestaurant(ref Restaurant restaurant)
+        {
+            
+                string addresse = restaurant.Address;
+                //if (db.Restaurant.Any(r => r.Address == addresse))
+                    //return;
                 db.Restaurant.Add(restaurant);
                 db.SaveChanges();
-            }
+            
         }
 
-        public void addReview(int star, string text, Restaurant restaurant)
+        public void addReview(ref Review review, ref Restaurant restaurant, ref Dish dish)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var review = new Review();
-                review.Stars = star;
-                review.Text = text;
+                review.Dish = dish;
                 review.AddresseNavigation = restaurant;
-
+                
                 db.Review.Add(review);
+                dish.Review.Add(review);
                 db.SaveChanges();
 
-            }
         }
 
-        public void addDish(double price, string type, Review review, Restaurant restaurant, Guest guest)
+        public void addDish(ref Dish dish, ref Restaurant restaurant, ref Guest guest)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var dish = new Dish();
-                dish.Price = price;
-                dish.Type = type;
+                db.Dish.Add(dish);
+                db.SaveChanges();
 
-                dish.ReviewId = review.ReviewId;
-
+                //var guest2 = db.Guest.Take(1).First();
                 var gd = new GuestDish();
                 gd.Dish = dish;
                 gd.Guest = guest;
 
                 dish.GuestDish.Add(gd);
+                
 
-                db.Dish.Add(dish);
                 db.SaveChanges();
+
+
             }
+
+        public void addDish(ref Dish dish, ref Restaurant restaurant)
+        {
+
+            db.Dish.Add(dish);
+            db.SaveChanges();
+
+            //var guest2 = db.Guest.Take(1).First();
+            var rd = new RestaurantDish();
+            rd.Dish = dish;
+            rd.AddresseNavigation = restaurant;
+            //rd.Addresse = restaurant.Address;
+            //rd.DishId = dish.DishId;
+            db.RestaurantDish.Add(rd);
+            restaurant.RestaurantDish.Add(rd);
+            dish.RestaurantDish.Add(rd);
+            db.SaveChanges();
 
 
         }
 
-        public void addGuest(Person person, TableIns table, Review review, Dish dish, DateTime time)
+        public void addGuest(ref Guest guest, ref Person person, ref TableIns table, ref Review review)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var guest = new Guest();
-                guest.Reservation = time;
-                guest.ReviewId = review.ReviewId;
+
+            guest.ReviewId = review.ReviewId;
                 guest.TableId = table.TableId;
                 guest.FkPersonId = person.PersonId;
-
-
-                dish.ReviewId = review.ReviewId;
-
-                var gd = new GuestDish();
-                gd.Dish = dish;
-                gd.Guest = guest;
-
-                guest.GuestDish.Add(gd);
-
                 db.Guest.Add(guest);
+
+                //dish.ReviewId = review.ReviewId;
+
+                //var gd = new GuestDish();
+                //gd.Dish = dish;
+                //gd.Guest = guest;
+
+                //guest.GuestDish.Add(gd);
+
+               
                 db.SaveChanges();
-            }
 
 
         }
 
-        public void addTable(int number, Restaurant restaurant, Waiter waiter)
+        public void addTable(ref TableIns table, ref Restaurant restaurant, ref Waiter waiter)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var table = new TableIns();
+            
                 table.Addresse = restaurant.Address;
-                table.Number = number;
-
+                db.TableIns.Add(table);
+                db.SaveChanges();
 
                 var waiterTable = new WaiterTableIns();
 
                 waiterTable.TableId = table.TableId;
                 waiterTable.WaiterId = waiter.WaiterId;
-                db.TableIns.Add(table);
+                
                 db.WaiterTableIns.Add(waiterTable);
                 db.SaveChanges();
-               
-            }
+                
         }
 
-        public void addWaiter(int salary, Person person, TableIns table)
+        public void addWaiter(ref Waiter waiter, ref Person person)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var waiter = new Waiter();
-                waiter.Salary = salary;
-                waiter.PersonId = person.PersonId;
+            waiter.PersonId = person.PersonId;
 
-                var waiterTable = new WaiterTableIns();
-                waiterTable.TableId = table.TableId;
-                waiterTable.WaiterId = waiter.WaiterId;
+                //var waiterTable = new WaiterTableIns();
+                //waiterTable.TableId = table.TableId;
+                //waiterTable.WaiterId = waiter.WaiterId;
 
                 db.Waiter.Add(waiter);
-                db.WaiterTableIns.Add(waiterTable);
+                //db.WaiterTableIns.Add(waiterTable);
                 db.SaveChanges();
 
-            }
         }
 
-        public void addPerson(string name)
+        public void addPerson(ref Person person)
         {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                var person = new Person();
-                person.Name = name;
-                db.Person.Add(person);
+            db.Person.Add(person);
                 db.SaveChanges();
 
-
-            }
         }
 
 

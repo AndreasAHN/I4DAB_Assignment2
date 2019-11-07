@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj": {}
+    "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj": {}
   },
   "projects": {
-    "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj": {
+    "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj",
+        "projectUniqueName": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj",
         "projectName": "Resturant",
-        "projectPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj",
+        "projectPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment22\\Resturant\\obj\\",
+        "outputPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",

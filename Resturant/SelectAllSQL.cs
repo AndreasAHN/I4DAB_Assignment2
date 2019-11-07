@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Resturant.Models;
 
 namespace Resturant
 {
-    class SelectAllSQL
+    public class SelectAllSQL
     {
         public SelectAllSQL()
         {
@@ -18,8 +19,14 @@ namespace Resturant
             using(var db = new I4DAB_HandIn2Context())
             {
                 var resturants = db.Restaurant.ToList();
-
-                return resturants;
+                foreach (var rest in resturants)
+                {
+                    Console.WriteLine(rest.Name);
+                    Console.WriteLine("Type: "+rest.Type);
+                    Console.WriteLine("Addresse: "+rest.Address);
+                    Console.WriteLine();
+                }
+                return resturants.ToList();
             }
         }
 
@@ -39,7 +46,7 @@ namespace Resturant
             {
                 var dish = db.Dish.ToList();
 
-                return dish;
+                return dish.ToList();
             }
         }
 
@@ -49,7 +56,7 @@ namespace Resturant
             {
                 var guest = db.Guest.ToList();
 
-                return guest;
+                return guest.ToList();
             }
         }
 
@@ -59,7 +66,7 @@ namespace Resturant
             {
                 var person = db.Person.ToList();
 
-                return person;
+                return person.ToList();
             }
         }
 
@@ -69,7 +76,7 @@ namespace Resturant
             {
                 var waiter = db.Waiter.ToList();
 
-                return waiter;
+                return waiter.ToList();
             }
         }
 
@@ -79,7 +86,7 @@ namespace Resturant
             {
                 var tableIns = db.TableIns.ToList();
 
-                return tableIns;
+                return tableIns.ToList();
             }
         }
 
@@ -89,7 +96,7 @@ namespace Resturant
             {
                 var waiterTableIns = db.WaiterTableIns.ToList();
 
-                return waiterTableIns;
+                return waiterTableIns.ToList();
             }
         }
     }
