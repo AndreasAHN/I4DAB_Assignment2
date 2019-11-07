@@ -81,13 +81,17 @@ namespace Resturant
 
             dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList();
 
+            Person dataOut = new Person();
+
             Console.WriteLine
             (
                 "\t" + "PersonId: " + dataOutPut[0].PersonId.ToString() + "\n" +
                 "\t" + "Name: " + dataOutPut[0].Name.ToString() + "\n" 
             );
 
-            return dataOutPut[0];
+            dataOut = dataOutPut[0];
+
+            return dataOut;
         }
 
 
@@ -119,7 +123,7 @@ namespace Resturant
             return dataOutPut.ToList();
         }
 
-        public List<Guest> selectGuest(Review review, TableIns tableIns)
+        public Guest selectGuest(Review review, TableIns tableIns)
         {
             List<Guest> dataOutPut = new List<Guest>();
 
@@ -133,7 +137,10 @@ namespace Resturant
                 "\t" + "ReviewId: " + dataOutPut[0].ReviewId.ToString() + "\n"
             );
 
-            return dataOutPut.ToList();
+            Guest dataOut = new Guest();
+            dataOut = dataOutPut[0];
+
+            return dataOut;
         }
 
 
@@ -157,22 +164,28 @@ namespace Resturant
         }
 
 
-        public List<GuestDish> selectGuestDish(Guest guest, Dish dish)
+        public GuestDish selectGuestDish(Guest guest, Dish dish)
         {
             List<GuestDish> dataOutPut = new List<GuestDish>();
 
             dataOutPut = db.GuestDish.Where(guestDishOut => ((guestDishOut.GuestId == guest.GuestId) && (guestDishOut.DishId == dish.DishId))).ToList();
 
-            return dataOutPut.ToList();
+            GuestDish dataOut = new GuestDish();
+            dataOut = dataOutPut[0];
+
+            return dataOut;
         }
 
-        public List<RestaurantDish> selectGuest(Restaurant restaurant, Dish dish)
+        public RestaurantDish selectGuest(Restaurant restaurant, Dish dish)
         {
             List<RestaurantDish> dataOutPut = new List<RestaurantDish>();
 
             dataOutPut = db.RestaurantDish.Where(restaurantDishOut => ((restaurantDishOut.Addresse == restaurant.Address) && (restaurantDishOut.DishId == dish.DishId))).ToList();
 
-            return dataOutPut.ToList();
+            RestaurantDish dataOut = new RestaurantDish();
+            dataOut = dataOutPut[0];
+
+            return dataOut;
         }
 
     }

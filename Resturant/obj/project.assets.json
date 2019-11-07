@@ -3634,19 +3634,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\andre\\.nuget\\packages\\": {}
+    "C:\\Users\\AndreasAHN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj",
+      "projectUniqueName": "C:\\Users\\AndreasAHN\\source\\repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj",
       "projectName": "Resturant",
-      "projectPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\Resturant.csproj",
-      "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\andre\\Source\\Repos\\I4DAB_Assignment23\\Resturant\\obj\\",
+      "projectPath": "C:\\Users\\AndreasAHN\\source\\repos\\I4DAB_Assignment22\\Resturant\\Resturant.csproj",
+      "packagesPath": "C:\\Users\\AndreasAHN\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AndreasAHN\\source\\repos\\I4DAB_Assignment22\\Resturant\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AndreasAHN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

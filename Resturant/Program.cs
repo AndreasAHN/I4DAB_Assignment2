@@ -367,7 +367,7 @@ namespace Resturant
                                         int idPerson = 0;
                                         try
                                         {
-                                            selectspecific.selectPerson(id);
+                                            selectspecific.selectPerson(idPerson);
                                         }
                                         catch (Exception)
                                         {
