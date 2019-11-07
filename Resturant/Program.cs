@@ -46,6 +46,8 @@ namespace Resturant
             Console.WriteLine("Skriv addresse for at vælge resturant");
             string userAddresse = Console.ReadLine();
 
+            Console.Clear();
+
             var nyrest = selectspecific.getRestaurant(userAddresse);
 
             Console.WriteLine("Skriv (j) for at tilføje dish. Ellers (n)");

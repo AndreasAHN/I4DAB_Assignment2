@@ -45,7 +45,13 @@ namespace Resturant
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
-                Console.WriteLine(dataOutPut[i].ToString());
+                Console.WriteLine
+                (
+                    "\t" + "ReviewId: " + dataOutPut[i].ReviewId.ToString() + "\n" +
+                    "\t" + "Stars: " + dataOutPut[i].Stars.ToString() + "\n"+
+                    "\t" + "Addresse: " + dataOutPut[i].Addresse.ToString() + "\n" +
+                    "\t" + "Text: " + dataOutPut[i].Text.ToString() + "\n"
+                );
             }
 
             return dataOutPut.ToList();
@@ -63,7 +69,12 @@ namespace Resturant
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
-                Console.WriteLine(dataOutPut[i].ToString());
+                Console.WriteLine
+                (
+                    "\t" + "TableId: " + dataOutPut[i].TableId.ToString() + "\n" +
+                    "\t" + "Addresse: " + dataOutPut[i].Addresse.ToString() + "\n" +
+                    "\t" + "Number: " + dataOutPut[i].Number.ToString() + "\n" 
+                );
             }
 
             return dataOutPut.ToList();
@@ -79,7 +90,11 @@ namespace Resturant
                 dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList();
             }
 
-            Console.WriteLine(dataOutPut[0].ToString());
+            Console.WriteLine
+            (
+                "\t" + "PersonId: " + dataOutPut[0].PersonId.ToString() + "\n" +
+                "\t" + "Name: " + dataOutPut[0].Name.ToString() + "\n" 
+            );
 
             return dataOutPut[0];
         }
@@ -96,7 +111,11 @@ namespace Resturant
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
-                Console.WriteLine(dataOutPut[i].ToString());
+                Console.WriteLine
+                (
+                    "\t" + "WaiterId: " + dataOutPut[i].WaiterId.ToString() + "\n" +
+                    "\t" + "Salary: " + dataOutPut[i].Salary.ToString() + "\n"
+                );
             }
 
             return dataOutPut.ToList();
@@ -112,8 +131,6 @@ namespace Resturant
                 dataOutPut = db.WaiterTableIns.Where(waiterTableInsOut => ((waiterTableInsOut.WaiterId == waiter.WaiterId) && (waiterTableInsOut.TableId == tableIns.TableId))).ToList();
             }
 
-            Console.WriteLine(dataOutPut.ToString());
-
             return dataOutPut.ToList();
         }
 
@@ -126,7 +143,13 @@ namespace Resturant
                 dataOutPut = db.Guest.Where(guestOut => ((guestOut.ReviewId == review.ReviewId) && (guestOut.TableId == tableIns.TableId))).ToList();
             }
 
-            Console.WriteLine(dataOutPut.ToString());
+            Console.WriteLine
+            (
+                "\t" + "GuestId: " + dataOutPut[0].GuestId.ToString() + "\n" +
+                "\t" + "Reservation: " + dataOutPut[0].Reservation.ToString() + "\n" +
+                "\t" + "TableId: " + dataOutPut[0].TableId.ToString() + "\n" +
+                "\t" + "ReviewId: " + dataOutPut[0].ReviewId.ToString() + "\n"
+            );
 
             return dataOutPut.ToList();
         }
@@ -143,14 +166,19 @@ namespace Resturant
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
-                Console.WriteLine(dataOutPut[i].ToString());
+                Console.WriteLine
+                (
+                    "\t" + "DishId: " + dataOutPut[i].DishId.ToString() + "\n" +
+                    "\t" + "Price: " + dataOutPut[i].Price.ToString() + "\n" +
+                    "\t" + "Type: " + dataOutPut[i].Type.ToString() + "\n"
+                );
             }
 
             return dataOutPut.ToList();
         }
 
 
-        public List<GuestDish> selectGuest(Guest guest, Dish dish)
+        public List<GuestDish> selectGuestDish(Guest guest, Dish dish)
         {
             List<GuestDish> dataOutPut = new List<GuestDish>();
 
@@ -158,8 +186,6 @@ namespace Resturant
             {
                 dataOutPut = db.GuestDish.Where(guestDishOut => ((guestDishOut.GuestId == guest.GuestId) && (guestDishOut.DishId == dish.DishId))).ToList();
             }
-
-            Console.WriteLine(dataOutPut.ToString());
 
             return dataOutPut.ToList();
         }
@@ -172,8 +198,6 @@ namespace Resturant
             {
                 dataOutPut = db.RestaurantDish.Where(restaurantDishOut => ((restaurantDishOut.Addresse == restaurant.Address) && (restaurantDishOut.DishId == dish.DishId))).ToList();
             }
-
-            Console.WriteLine(dataOutPut.ToString());
 
             return dataOutPut.ToList();
         }
