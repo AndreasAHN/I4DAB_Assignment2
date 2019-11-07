@@ -15,85 +15,203 @@ namespace Resturant
             var selectAll = new SelectAllSQL();
             var select = new SelectSQL();
             var selectspecific = new SelectSpecifikSQL(db);
-            Console.WriteLine("Velkommen til Restaurant adminstration.");
-            Console.WriteLine("Tilføj Restuarant på (a) eller vælg eksiterende på (e)");
 
-            selectAll.SelectAllResturant();
-            String addresse = "";
-            string us = Console.ReadLine();
-            switch (us)
+            string menu = "mainMenu";
+            string resturantMenu = "mainMenu";
+
+            string userAddresse;
+            Restaurant nyrest = new Restaurant();
+
+            bool runner = true;
+            while (runner)
             {
-                case "a":
-                    do
-                    {
-                        Console.Write("Skriv navn: ");
-                        string name = Console.ReadLine();
-                        Console.Write("Skriv addresse: ");
-                        addresse = Console.ReadLine();
-                        Console.Write("Skriv type restaurant: ");
-                        string type = Console.ReadLine();
+                switch (menu)
+                {
+                    case "mainMenu": // Main menu
+                        Console.Clear();
+                        Console.WriteLine("Velkommen til Restaurant adminstration.");
+                        Console.WriteLine("(a): Tilføj Restuarant på");
+                        Console.WriteLine("(e): Vælg eksiterende på");
+                        Console.WriteLine("(r): Vis alle resturanter");
+                        Console.WriteLine("(x): Exit program");
 
-                        var rest = new Restaurant() {Name = name, Address = addresse, Type = type};
-                        create.addRestaurant(ref rest);
+                        string us = Console.ReadLine();
 
-                        Console.WriteLine("Tilføjet. Tryk (i) for at tilføje ny Restaurant");
-                    } while (Console.ReadLine().Equals("i"));
-                    break;
-                case "e":
-                    break;
+                        Console.Clear();
+
+                        String addresse = "";
+                        
+                        switch (us)
+                        {
+                            case "a":
+                                do
+                                {
+                                    Console.Write("Skriv navn: ");
+                                    string name = Console.ReadLine();
+                                    Console.Write("Skriv addresse: ");
+                                    addresse = Console.ReadLine();
+                                    Console.Write("Skriv type restaurant: ");
+                                    string type = Console.ReadLine();
+
+                                    var rest = new Restaurant() { Name = name, Address = addresse, Type = type };
+                                    create.addRestaurant(ref rest);
+
+                                    Console.WriteLine("Tilføjet. Tryk (i) for at tilføje ny Restaurant");
+                                } while (Console.ReadLine().Equals("i"));
+                                break;
+                            case "e":
+                                Console.WriteLine("Skriv addresse for at vælge resturant");
+                                userAddresse = Console.ReadLine();
+                                nyrest = selectspecific.getRestaurant(userAddresse);
+                                menu = "Resturant";
+                                break;
+
+                            case "r":
+                                Console.WriteLine("Loading...");
+                                selectAll.SelectAllResturant();
+                                Console.WriteLine("Tryk enter for at forsætte");
+                                Console.ReadLine();
+                                break;
+
+                            case "x":
+                                runner = false;
+                                break;
+
+                            default:
+                                Console.WriteLine("Wrong input");
+                                break;
+                        }
+                        break;
+
+                    case "Resturant":
+                        switch (resturantMenu)
+                        { 
+                            case "mainMenu":
+                                Console.Clear();
+                                Console.WriteLine("Velkommen til " + nyrest.Address.ToString());
+                                Console.WriteLine
+                                    (
+                                    "0: Tilbage til main menu" + "\n"+
+                                    "1: Vis resturantens menu" + "\n" +
+                                    "2: Tilføj en dish" + "\n" +
+                                    "3: Tilføj et rewiew til en dish" + "\n" +
+                                    "4: Få vist et review for en dish"
+                                    );
+
+                                string menuInput = Console.ReadLine();
+                                switch (menuInput)
+                                {
+                                    case "0":
+                                        menu = "mainMenu";
+                                        break;
+
+                                    case "1":
+                                        resturantMenu = "menuShowMenu";
+                                        break;
+
+                                    case "2":
+                                        resturantMenu = "menuNewDish";
+                                        break;
+
+                                    case "3":
+                                        resturantMenu = "menuShowReviews";
+                                        break;
+
+                                    case "4":
+                                        resturantMenu = "menuShowReviews";
+                                        break;
+
+                                    default:
+                                        Console.WriteLine("Wrong input");
+                                        break;
+                                }
+                                Console.Clear();
+                                break;
+
+                            case "menuNewDish":
+                                string answerDish = "j";
+                                while (answerDish.Equals("j"))
+                                {
+                                    Console.Write("Skriv navn: ");
+                                    string name = Console.ReadLine();
+
+                                    Console.Write("Skriv pris i hele kroner: ");
+                                    int pris = int.Parse(Console.ReadLine());
+
+                                    Console.Write("Skriv type dish: ");
+                                    string type = Console.ReadLine();
+
+                                    var dish = new Dish() { Price = pris, Type = type, Name = name };
+
+                                    create.addDish(ref dish, ref nyrest);
+                                    Console.WriteLine("Skriv (j) for at tilføje endnu en dish. Ellers (n)");
+                                    answerDish = Console.ReadLine();
+                                }
+                                resturantMenu = "mainMenu";
+                                break;
+
+                            case "menuShowMenu":
+                                select.SelectRestaurantMenu2(nyrest.Address);
+                                Console.WriteLine("Tryk enter for at forsætte");
+                                Console.ReadLine();
+                                resturantMenu = "mainMenu";
+                                break;
+
+                            case "menuNewReview":
+                                string answerReview = "j";
+                                while (answerReview.Equals("j"))
+                                {
+                                    select.SelectRestaurantMenu2(nyrest.Address);
+                                    Console.WriteLine("Skriv navn på dish");
+                                    string name = Console.ReadLine();
+                                    var dish = db.Dish.Where(d => d.Name.Equals(name)).FirstOrDefault();
+                                    Console.WriteLine("Udført");
+                                    Console.Write("Skriv tekst");
+                                    string tekst = Console.ReadLine();
+                                    Console.Write("Skriv antal stjerner");
+                                    int stars = int.Parse(Console.ReadLine());
+                                    var review = new Review() { Text = tekst, Stars = stars };
+
+                                    create.addReview(ref review, ref nyrest, ref dish);
+                                    Console.WriteLine("Fuldført");
+                                    Console.WriteLine("Vil du skrive nyt review? (j) for ja, og (n) for nej");
+                                    answerReview = Console.ReadLine();
+                                }
+                                resturantMenu = "mainMenu";
+                                break;
+
+                            case "menuShowReviews":
+                                select.SelectRestaurantMenu2(nyrest.Address);
+                                Console.WriteLine("Tryk enter for at forsætte");
+                                Console.ReadLine();
+                                resturantMenu = "mainMenu";
+                                break;
+
+                            default:
+                                Console.WriteLine("Wrong input");
+                                break;
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Wrong input");
+                        menu = "mainMenu";
+                        break;
+                }
             }
 
-            Console.WriteLine("Skriv addresse for at vælge resturant");
-            string userAddresse = Console.ReadLine();
 
-            Console.Clear();
 
-            var nyrest = selectspecific.getRestaurant(userAddresse);
 
-            Console.WriteLine("Skriv (j) for at tilføje dish. Ellers (n)");
-            while (Console.ReadLine().Equals("j"))
-            {
-                Console.Write("Skriv navn: ");
-                string name = Console.ReadLine();
 
-                Console.Write("Skriv pris i hele kroner: ");
-                int pris = int.Parse(Console.ReadLine());
-
-                Console.Write("Skriv type dish: ");
-                string type = Console.ReadLine();
-
-                var dish = new Dish() {Price = pris, Type = type, Name = name};
-
-                create.addDish(ref dish,ref nyrest);
-                Console.WriteLine("Skriv (j) for at tilføje endnu en dish. Ellers (n)");
-            }
-            Console.WriteLine("Vil du se menuen for restauranten. (j) for ja, og (n) for nej");
-            if(Console.ReadLine().Equals("j"))
-                select.SelectRestaurantMenu2(nyrest.Address);
-
-            Console.WriteLine("Vil du tilføje et review til en af dishes? Skriv (j) for ja eller (n) for nej");
-            while (Console.ReadLine().Equals("j"))
-            {
-                select.SelectRestaurantMenu2(nyrest.Address);
-                Console.WriteLine("Skriv navn på dish");
-                string name = Console.ReadLine();
-                var dish = db.Dish.Where(d => d.Name.Equals(name)).FirstOrDefault();
-                Console.WriteLine("Udført");
-                Console.Write("Skriv tekst");
-                string tekst = Console.ReadLine();
-                Console.Write("Skriv antal stjerner");
-                int stars = int.Parse(Console.ReadLine());
-                var review = new Review() {Text = tekst, Stars = stars};
-
-                create.addReview(ref review,ref nyrest,ref dish);
-                Console.WriteLine("Fuldført");
-                Console.WriteLine("Vil du skrive nyt review? (j) for ja, og (n) for nej");
-            }
             
-            Console.WriteLine("Vil du se menuen med de nye reviews? (j) for ja, og (n) for nej");
-            if(Console.ReadLine().Equals("j"))
-                select.SelectRestaurantMenu2(nyrest.Address);
-            Console.ReadLine();
+
+
+            //////////////////Menu : 
+
+            
+
+            
 
             Console.ReadLine();
             var person = new Person(){Name = "Henrik"};
