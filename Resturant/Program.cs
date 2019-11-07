@@ -350,7 +350,10 @@ namespace Resturant
                                         break;
 
                                     case "addPerson":
-                                        Person personBuf = new Person() { Name = "Henrik" };
+                                        Console.WriteLine("Skriv navnet for personen:");
+                                        string namePerson = Console.ReadLine();
+                                        Person personBuf = new Person() { Name = namePerson };
+
                                         try
                                         {
                                             create.addPerson(ref personBuf);
@@ -361,10 +364,16 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "showPerson":
-                                        int idPerson = 0;
+                                        Console.WriteLine("Skriv id for personen:");
+                                        int idPerson = int.Parse(Console.ReadLine());
+
                                         try
                                         {
                                             selectspecific.selectPerson(idPerson);
@@ -375,14 +384,23 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "addWaiter":
-                                        Waiter waiterBuf = new Waiter() { Salary = 150 };
-                                        int idPerson1 = 0;
+                                        Console.WriteLine("Skriv tjernerens salary:");
+                                        int salaryWaiter = int.Parse(Console.ReadLine());
+                                        Waiter waiterBuf = new Waiter() { Salary = salaryWaiter };
+
+                                        Console.WriteLine("Skriv personens id, som tjerneren hører til :");
+                                        int personWaiter = int.Parse(Console.ReadLine());
+
                                         try
                                         {
-                                            Person personBuf2 = selectspecific.selectPerson(idPerson1);
+                                            Person personBuf2 = selectspecific.selectPerson(personWaiter);
                                             create.addWaiter(ref waiterBuf, ref personBuf2);
                                         }
                                         catch (Exception)
@@ -391,13 +409,19 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "showWaiter":
-                                        int idPerson2 = 0;
+                                        Console.WriteLine("Skriv tjernerens person id:");
+                                        int waiterPersonNr = int.Parse(Console.ReadLine());
+                                        
                                         try
                                         {
-                                            Person personBuf3 = selectspecific.selectPerson(idPerson2);
+                                            Person personBuf3 = selectspecific.selectPerson(waiterPersonNr);
                                             selectspecific.selectWaiter(personBuf3);
                                         }
                                         catch (Exception)
@@ -406,14 +430,23 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "addTable":
-                                        TableIns tableBuf = new TableIns() { Number = 7 };
-                                        int idPerson3 = 0;
+                                        Console.WriteLine("Skriv nummeret bordet skal have:");
+                                        int tableNr = int.Parse(Console.ReadLine());
+                                        TableIns tableBuf = new TableIns() { Number = tableNr };
+
+                                        Console.WriteLine("Skriv tjernerens person id:");
+                                        int waiterPersonNr1 = int.Parse(Console.ReadLine());
+
                                         try
                                         {
-                                            Person personBuf4 = selectspecific.selectPerson(idPerson3);
+                                            Person personBuf4 = selectspecific.selectPerson(waiterPersonNr1);
                                             var waiterBuf1 = selectspecific.selectWaiter(personBuf4);
                                             Waiter waiterBuf2 = waiterBuf1[0];
                                             create.addTable(ref tableBuf, ref nyrest, ref waiterBuf2);
@@ -424,6 +457,10 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "showTable":
@@ -437,26 +474,45 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
                                     case "addGuest":
-                                        var guest = new Guest() { Reservation = DateTime.Now };
-                                        try
-                                        {
-                                            //create.addGuest();
-                                        }
-                                        catch (Exception)
-                                        {
-                                            Console.WriteLine("Failed save guest");
-                                            Console.WriteLine("Tryk enter for at forsætte");
-                                            Console.ReadLine();
-                                        }
+                                        Console.WriteLine("Need implementation...");
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+
+                                        //Console.WriteLine("Skriv person id:");
+                                        //int personNr2 = int.Parse(Console.ReadLine());
+
+                                        //var guest = new Guest() { Reservation = DateTime.Now };
+
+                                        //try
+                                        //{
+                                        //    Person personBuf5 = selectspecific.selectPerson(personNr2);
+                                        //    create.addGuest();
+                                        //}
+                                        //catch (Exception)
+                                        //{
+                                        //    Console.WriteLine("Failed save guest");
+                                        //    Console.WriteLine("Tryk enter for at forsætte");
+                                        //    Console.ReadLine();
+                                        //}
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
 
-                                    case "showGuest":
+                                    case "showGuest": //Mullig fejl
                                         try
                                         {
-                                            //selectspecific.selectGuest();
+                                            Review reviewBuf = selectspecific.selectReview(nyrest)[0];
+                                            TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
+                                            selectspecific.selectGuest(reviewBuf, tableInsbuf);
                                         }
                                         catch (Exception)
                                         {
@@ -464,6 +520,10 @@ namespace Resturant
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
                                         break;
                                 }
                                 break;
