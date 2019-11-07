@@ -48,7 +48,7 @@ namespace Resturant
                 Console.WriteLine(dataOutPut[i].ToString());
             }
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
 
@@ -66,7 +66,7 @@ namespace Resturant
                 Console.WriteLine(dataOutPut[i].ToString());
             }
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
 
@@ -99,7 +99,7 @@ namespace Resturant
                 Console.WriteLine(dataOutPut[i].ToString());
             }
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
 
@@ -114,7 +114,7 @@ namespace Resturant
 
             Console.WriteLine(dataOutPut.ToString());
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
         public List<Guest> selectGuest(Review review, TableIns tableIns)
@@ -128,7 +128,7 @@ namespace Resturant
 
             Console.WriteLine(dataOutPut.ToString());
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
 
@@ -146,7 +146,7 @@ namespace Resturant
                 Console.WriteLine(dataOutPut[i].ToString());
             }
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
 
@@ -161,7 +161,7 @@ namespace Resturant
 
             Console.WriteLine(dataOutPut.ToString());
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
         public List<RestaurantDish> selectGuest(Restaurant restaurant, Dish dish)
@@ -175,7 +175,7 @@ namespace Resturant
 
             Console.WriteLine(dataOutPut.ToString());
 
-            return dataOutPut;
+            return dataOutPut.ToList();
         }
 
     }
