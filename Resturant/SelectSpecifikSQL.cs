@@ -38,10 +38,7 @@ namespace Resturant
             //    }
             //}
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.Review.Where(reviewOut => reviewOut.Addresse.StartsWith(resturant.Address)).ToList();
-            }
+           dataOutPut = db.Review.Where(reviewOut => reviewOut.Addresse.StartsWith(resturant.Address)).ToList();
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
@@ -62,10 +59,7 @@ namespace Resturant
         {
             List<TableIns> dataOutPut;
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.TableIns.Where(reviewOut => reviewOut.Addresse.StartsWith(resturant.Address)).ToList();
-            }
+            dataOutPut = db.TableIns.Where(reviewOut => reviewOut.Addresse.StartsWith(resturant.Address)).ToList();
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
@@ -85,10 +79,7 @@ namespace Resturant
         {
             List<Person> dataOutPut = new List<Person>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList();
-            }
+            dataOutPut = db.Person.Where(personOut => personOut.PersonId == id).ToList();
 
             Console.WriteLine
             (
@@ -104,10 +95,7 @@ namespace Resturant
         {
             List<Waiter> dataOutPut = new List<Waiter>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.Waiter.Where(waiterOut => waiterOut.PersonId == person.PersonId).ToList();
-            }
+            dataOutPut = db.Waiter.Where(waiterOut => waiterOut.PersonId == person.PersonId).ToList();
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
@@ -126,10 +114,7 @@ namespace Resturant
         {
             List<WaiterTableIns> dataOutPut = new List<WaiterTableIns>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.WaiterTableIns.Where(waiterTableInsOut => ((waiterTableInsOut.WaiterId == waiter.WaiterId) && (waiterTableInsOut.TableId == tableIns.TableId))).ToList();
-            }
+            dataOutPut = db.WaiterTableIns.Where(waiterTableInsOut => ((waiterTableInsOut.WaiterId == waiter.WaiterId) && (waiterTableInsOut.TableId == tableIns.TableId))).ToList();
 
             return dataOutPut.ToList();
         }
@@ -138,10 +123,7 @@ namespace Resturant
         {
             List<Guest> dataOutPut = new List<Guest>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.Guest.Where(guestOut => ((guestOut.ReviewId == review.ReviewId) && (guestOut.TableId == tableIns.TableId))).ToList();
-            }
+            dataOutPut = db.Guest.Where(guestOut => ((guestOut.ReviewId == review.ReviewId) && (guestOut.TableId == tableIns.TableId))).ToList();
 
             Console.WriteLine
             (
@@ -159,10 +141,7 @@ namespace Resturant
         {
             List<Dish> dataOutPut = new List<Dish>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.Dish.Where(dishOut => dishOut.Review == review).ToList();
-            }
+            dataOutPut = db.Dish.Where(dishOut => dishOut.Review == review).ToList();
 
             for (int i = 0; i < dataOutPut.Count; i++)
             {
@@ -182,10 +161,7 @@ namespace Resturant
         {
             List<GuestDish> dataOutPut = new List<GuestDish>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.GuestDish.Where(guestDishOut => ((guestDishOut.GuestId == guest.GuestId) && (guestDishOut.DishId == dish.DishId))).ToList();
-            }
+            dataOutPut = db.GuestDish.Where(guestDishOut => ((guestDishOut.GuestId == guest.GuestId) && (guestDishOut.DishId == dish.DishId))).ToList();
 
             return dataOutPut.ToList();
         }
@@ -194,10 +170,7 @@ namespace Resturant
         {
             List<RestaurantDish> dataOutPut = new List<RestaurantDish>();
 
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                dataOutPut = db.RestaurantDish.Where(restaurantDishOut => ((restaurantDishOut.Addresse == restaurant.Address) && (restaurantDishOut.DishId == dish.DishId))).ToList();
-            }
+            dataOutPut = db.RestaurantDish.Where(restaurantDishOut => ((restaurantDishOut.Addresse == restaurant.Address) && (restaurantDishOut.DishId == dish.DishId))).ToList();
 
             return dataOutPut.ToList();
         }
