@@ -350,10 +350,10 @@ namespace Resturant
                                         break;
 
                                     case "addPerson":
-                                        var person = new Person() { Name = "Henrik" };
+                                        Person personBuf = new Person() { Name = "Henrik" };
                                         try
                                         {
-
+                                            create.addPerson(ref personBuf);
                                         }
                                         catch (Exception)
                                         {
@@ -364,7 +364,7 @@ namespace Resturant
                                         break;
 
                                     case "showPerson":
-                                        int id = 0;
+                                        int idPerson = 0;
                                         try
                                         {
                                             selectspecific.selectPerson(id);
@@ -378,10 +378,12 @@ namespace Resturant
                                         break;
 
                                     case "addWaiter":
-                                        var waiter = new Waiter() { Salary = 150 };
+                                        Waiter waiterBuf = new Waiter() { Salary = 150 };
+                                        int idPerson1 = 0;
                                         try
                                         {
-
+                                            Person personBuf2 = selectspecific.selectPerson(idPerson1);
+                                            create.addWaiter(ref waiterBuf, ref personBuf2);
                                         }
                                         catch (Exception)
                                         {
@@ -392,11 +394,11 @@ namespace Resturant
                                         break;
 
                                     case "showWaiter":
-                                        int idPerson = 0;
+                                        int idPerson2 = 0;
                                         try
                                         {
-                                            Person personBuf = selectspecific.selectPerson(idPerson);
-                                            selectspecific.selectWaiter(personBuf);
+                                            Person personBuf3 = selectspecific.selectPerson(idPerson2);
+                                            selectspecific.selectWaiter(personBuf3);
                                         }
                                         catch (Exception)
                                         {
@@ -407,10 +409,14 @@ namespace Resturant
                                         break;
 
                                     case "addTable":
-                                        var table = new TableIns() { Number = 7 };
+                                        TableIns tableBuf = new TableIns() { Number = 7 };
+                                        int idPerson3 = 0;
                                         try
                                         {
-
+                                            Person personBuf4 = selectspecific.selectPerson(idPerson3);
+                                            var waiterBuf1 = selectspecific.selectWaiter(personBuf4);
+                                            Waiter waiterBuf2 = waiterBuf1[0];
+                                            create.addTable(ref tableBuf, ref nyrest, ref waiterBuf2);
                                         }
                                         catch (Exception)
                                         {
@@ -437,7 +443,7 @@ namespace Resturant
                                         var guest = new Guest() { Reservation = DateTime.Now };
                                         try
                                         {
-
+                                            //create.addGuest();
                                         }
                                         catch (Exception)
                                         {
