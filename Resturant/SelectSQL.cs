@@ -34,13 +34,13 @@ namespace Resturant
                             Console.WriteLine("Type:{0}", dish.Dish.Type);
                             Console.WriteLine("Price:{0:0.00}", dish.Dish.Price);
 
-                            var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
+                            //var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
 
-                            foreach (var dish in rest.RestaurantDish)
+                            /*foreach (var dish in rest.RestaurantDish)
                             {
                                 Console.WriteLine("Type:{0}", dish.Dish.Type);
                                 Console.WriteLine("Price:{0:0.00}", dish.Dish.Price);
-                            }
+                            }*/
                         }
                     }
                 }
