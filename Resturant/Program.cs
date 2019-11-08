@@ -64,7 +64,7 @@ namespace Resturant
                                     }
                                     catch (Exception)
                                     {
-                                        Console.WriteLine("Failed save resturant");
+                                        Console.WriteLine("Fejled save resturant");
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
                                     }
@@ -75,7 +75,7 @@ namespace Resturant
                             case "e":
                                 Console.WriteLine("Skriv addresse for at vælge restaurant");
                                 userAddresse = Console.ReadLine();
-                                Console.WriteLine("Loading... \n");
+                                Console.WriteLine("Indlæser... \n");
                                 try
                                 {
                                     nyrest = selectspecific.getRestaurant(userAddresse);
@@ -83,7 +83,7 @@ namespace Resturant
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Failed loading resturant");
+                                    Console.WriteLine("Fejlede Indlæser resturant");
                                     Console.WriteLine("Tryk enter for at forsætte");
                                     Console.ReadLine();
                                 }
@@ -91,14 +91,14 @@ namespace Resturant
                                 break;
 
                             case "r":
-                                Console.WriteLine("Loading... \n");
+                                Console.WriteLine("Indlæser... \n");
                                 try
                                 {
                                     selectAll.SelectAllResturant();
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Failed loading restaurant");
+                                    Console.WriteLine("Fejlede Indlæser restaurant");
                                     Console.WriteLine("Tryk enter for at forsætte");
                                     Console.ReadLine();
                                 }
@@ -112,7 +112,7 @@ namespace Resturant
                                 break;
 
                             default:
-                                Console.WriteLine("Wrong input");
+                                Console.WriteLine("Forkert indtastning");
                                 Console.WriteLine("Tryk enter for at forsætte");
                                 Console.ReadLine();
                                 break;
@@ -154,7 +154,7 @@ namespace Resturant
                                         break;
 
                                     case "3":
-                                        resturantMenu = "menuShowReviews";
+                                        resturantMenu = "menuNewReview";
                                         break;
 
                                     case "4":
@@ -166,7 +166,7 @@ namespace Resturant
                                         break;
 
                                     default:
-                                        Console.WriteLine("Wrong input");
+                                        Console.WriteLine("Forkert indtastning");
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
                                         break;
@@ -194,7 +194,7 @@ namespace Resturant
                                     }
                                     catch (Exception)
                                     {
-                                        Console.WriteLine("Failed save dish");
+                                        Console.WriteLine("Fejlede save dish");
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
                                     }
@@ -206,7 +206,7 @@ namespace Resturant
                                 break;
 
                             case "menuShowMenu":
-                                Console.WriteLine("Loading... \n");
+                                Console.WriteLine("Indlæser... \n");
 
                                 try
                                 { 
@@ -214,7 +214,7 @@ namespace Resturant
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Failed loading menu");
+                                    Console.WriteLine("Fejlede Indlæser menu");
                                     Console.WriteLine("Tryk enter for at forsætte");
                                     Console.ReadLine();
                                 }
@@ -245,7 +245,7 @@ namespace Resturant
                                     }
                                     catch (Exception)
                                     {
-                                        Console.WriteLine("Failed save review");
+                                        Console.WriteLine("Fejlede save review");
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
                                     }
@@ -258,7 +258,7 @@ namespace Resturant
                                 break;
 
                             case "menuShowReviews":
-                                Console.WriteLine("Loading... \n");
+                                Console.WriteLine("Indlæser... \n");
                                 
                                 try
                                 { 
@@ -266,7 +266,7 @@ namespace Resturant
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Failed loading review");
+                                    Console.WriteLine("Fejlede Indlæser review");
                                     Console.WriteLine("Tryk enter for at forsætte");
                                     Console.ReadLine();
                                 }
@@ -345,7 +345,7 @@ namespace Resturant
                                                 break;
 
                                             default:
-                                                Console.WriteLine("Wrong input");
+                                                Console.WriteLine("Forkert indtastning");
                                                 Console.WriteLine("Tryk enter for at forsætte");
                                                 Console.ReadLine();
                                                 break;
@@ -365,7 +365,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed save person");
+                                            Console.WriteLine("Fejlede save person");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -385,7 +385,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed loading person");
+                                            Console.WriteLine("Fejlede Indlæser person");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -410,7 +410,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed save waiter");
+                                            Console.WriteLine("Fejlede save waiter");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -431,7 +431,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed loading watier");
+                                            Console.WriteLine("Fejlede Indlæser watier");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -458,7 +458,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed save table");
+                                            Console.WriteLine("Fejlede save table");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -475,7 +475,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed loading table");
+                                            Console.WriteLine("Fejlede Indlæser table");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -509,8 +509,8 @@ namespace Resturant
                                         var guest = new Guest() {Reservation = DateTime.Now};
                                         create.addGuest(ref guest,ref gperson,ref table);
 
-                                        Console.WriteLine("Tryk enter for at forsætte");
-                                        Console.ReadLine();
+                                        //Console.WriteLine("Tryk enter for at forsætte");
+                                        //Console.ReadLine();
 
                                         //Console.WriteLine("Skriv person id:");
                                         //int personNr2 = int.Parse(Console.ReadLine());
@@ -526,7 +526,7 @@ namespace Resturant
                                         //}
                                         //catch (Exception)
                                         //{
-                                        //    Console.WriteLine("Failed save guest");
+                                        //    Console.WriteLine("Fejlede save guest");
                                         //    Console.WriteLine("Tryk enter for at forsætte");
                                         //    Console.ReadLine();
                                         //}
@@ -539,14 +539,17 @@ namespace Resturant
                                     case "showGuest": //Mullig fejl
                                         try
                                         {
-                                            Review reviewBuf = selectspecific.selectReview(nyrest)[0];
-                                            TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
-                                            selectspecific.selectGuest(reviewBuf, tableInsbuf);
+                                            Console.WriteLine("Skriv id for gæst");
+                                            int guestID = int.Parse(Console.ReadLine());
+                                            selectspecific.selectAGuest(guestID);
+                                            //Review reviewBuf = selectspecific.selectReview(nyrest)[0];
+                                            //TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
+                                            //selectspecific.selectGuest(reviewBuf, tableInsbuf);
                                             
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed loading guest");
+                                            Console.WriteLine("Fejlede Indlæser guest");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -563,7 +566,7 @@ namespace Resturant
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Failed loading guest");
+                                            Console.WriteLine("Fejlede Indlæser guest");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -577,7 +580,7 @@ namespace Resturant
                                 break;
 
                             default:
-                                Console.WriteLine("Wrong input");
+                                Console.WriteLine("Forkert indtastning");
                                 Console.WriteLine("Tryk enter for at forsætte");
                                 Console.ReadLine();
                                 break;
@@ -585,7 +588,7 @@ namespace Resturant
                         break;
 
                     default:
-                        Console.WriteLine("Wrong input");
+                        Console.WriteLine("Forkert indtastning");
                         menu = "mainMenu";
                         Console.WriteLine("Tryk enter for at forsætte");
                         Console.ReadLine();
