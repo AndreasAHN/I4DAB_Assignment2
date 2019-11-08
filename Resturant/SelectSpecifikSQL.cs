@@ -189,6 +189,16 @@ namespace Resturant
             return dataOut;
         }
 
+        public void selectAGuest(int id)
+        {
+            var guest = db.Guest.Where(g => g.GuestId == id).FirstOrDefault();
+            Console.WriteLine("Gæsten:");
+            Console.WriteLine("ID: "+guest.GuestId);
+            Console.WriteLine("Reservation: "+guest.Reservation);
+            var person = db.Person.Where(p => p.PersonId == guest.FkPersonId).First();
+            Console.WriteLine("Navn: "+person.Name);
+            Console.WriteLine();
+        }
         public void selectGuestsAtRestaurant(Restaurant rest)
         {
             var tableGuests = db.TableIns.Include(t => t.Guest).Where(t => t.Addresse == rest.Address).ToList();

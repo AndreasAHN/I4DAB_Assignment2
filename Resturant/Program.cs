@@ -154,7 +154,7 @@ namespace Resturant
                                         break;
 
                                     case "3":
-                                        resturantMenu = "menuShowReviews";
+                                        resturantMenu = "menuNewReview";
                                         break;
 
                                     case "4":
@@ -509,8 +509,8 @@ namespace Resturant
                                         var guest = new Guest() {Reservation = DateTime.Now};
                                         create.addGuest(ref guest,ref gperson,ref table);
 
-                                        Console.WriteLine("Tryk enter for at forsætte");
-                                        Console.ReadLine();
+                                        //Console.WriteLine("Tryk enter for at forsætte");
+                                        //Console.ReadLine();
 
                                         //Console.WriteLine("Skriv person id:");
                                         //int personNr2 = int.Parse(Console.ReadLine());
@@ -539,9 +539,12 @@ namespace Resturant
                                     case "showGuest": //Mullig fejl
                                         try
                                         {
-                                            Review reviewBuf = selectspecific.selectReview(nyrest)[0];
-                                            TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
-                                            selectspecific.selectGuest(reviewBuf, tableInsbuf);
+                                            Console.WriteLine("Skriv id for gæst");
+                                            int guestID = int.Parse(Console.ReadLine());
+                                            selectspecific.selectAGuest(guestID);
+                                            //Review reviewBuf = selectspecific.selectReview(nyrest)[0];
+                                            //TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
+                                            //selectspecific.selectGuest(reviewBuf, tableInsbuf);
                                             
                                         }
                                         catch (Exception)
