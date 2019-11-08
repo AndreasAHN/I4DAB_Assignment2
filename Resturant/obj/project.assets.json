@@ -3634,23 +3634,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\marti\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\mub19\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\4. semester\\DAB\\I4DAB_ASP\\Resturant\\Resturant.csproj",
+      "projectUniqueName": "C:\\Users\\mub19\\source\\repos\\I4DAB_Assignment2\\Resturant\\Resturant.csproj",
       "projectName": "Resturant",
-      "projectPath": "C:\\4. semester\\DAB\\I4DAB_ASP\\Resturant\\Resturant.csproj",
-      "packagesPath": "C:\\Users\\marti\\.nuget\\packages\\",
-      "outputPath": "C:\\4. semester\\DAB\\I4DAB_ASP\\Resturant\\obj\\",
+      "projectPath": "C:\\Users\\mub19\\source\\repos\\I4DAB_Assignment2\\Resturant\\Resturant.csproj",
+      "packagesPath": "C:\\Users\\mub19\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mub19\\source\\repos\\I4DAB_Assignment2\\Resturant\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\marti\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mub19\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

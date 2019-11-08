@@ -27,12 +27,12 @@ namespace Resturant
                 {
                     if (rest.Address == address)
                     {
-                        Console.WriteLine("Restaurant stars:{0:0.00}", ReviewAverage(address));
+                        Console.WriteLine("Restaurant stjerner:{0:0.00}", ReviewAverage(address));
                         Console.WriteLine("Menu:");
                         foreach (var dish in rest.RestaurantDish)
                         {
                             Console.WriteLine("Type:{0}", dish.Dish.Type);
-                            Console.WriteLine("Price:{0:0.00}", dish.Dish.Price);
+                            Console.WriteLine("Pris:{0:0.00}", dish.Dish.Price);
 
                             //var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
 
@@ -114,7 +114,7 @@ namespace Resturant
             using (var db = new I4DAB_HandIn2Context())
             {
                 List<Restaurant> restlist = db.Restaurant.Where(t => t.Type.Equals(type)).ToList();
-                Console.WriteLine("Restaurants with type "+type+":");
+                Console.WriteLine("Restauranter af type "+type+":");
                 foreach (var rest in restlist)
                 {
                     Console.WriteLine(rest.Name);
