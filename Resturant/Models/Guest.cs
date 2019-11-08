@@ -13,7 +13,7 @@ namespace Resturant.Models
         public int GuestId { get; set; }
         public DateTime Reservation { get; set; }
         public int TableId { get; set; }
-        public int ReviewId { get; set; }
+        public int? ReviewId { get; set; }
         public int? FkPersonId { get; set; }
 
         public Person FkPerson { get; set; }

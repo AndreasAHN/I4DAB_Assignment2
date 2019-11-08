@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal;
 using Resturant.Models;
 
 namespace Resturant
@@ -64,9 +65,18 @@ namespace Resturant
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var person = db.Person.ToList();
+                var persons = db.Person.ToList();
 
-                return person.ToList();
+                Console.WriteLine("Tilgængelige personer:");
+
+                foreach (var person in persons)
+                {
+                    Console.WriteLine("Navn: ");
+                    Console.WriteLine(person.Name);
+                }
+                Console.WriteLine();
+
+                return persons.ToList();
             }
         }
 
@@ -74,9 +84,16 @@ namespace Resturant
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var waiter = db.Waiter.ToList();
-
-                return waiter.ToList();
+                var waiters = db.Waiter.ToList();
+                Console.WriteLine("Waiters:");
+                foreach (var waiter in waiters)
+                {
+                    Console.WriteLine("ID: "+waiter.WaiterId);
+                    Console.WriteLine("Navn: "+waiter.Person.Name);
+                    Console.WriteLine("Løn: "+waiter.Salary);
+                    Console.WriteLine();
+                }
+                return waiters;
             }
         }
 
@@ -87,6 +104,22 @@ namespace Resturant
                 var tableIns = db.TableIns.ToList();
 
                 return tableIns.ToList();
+            }
+        }
+
+        public void SelectAllTabletoRestaurant(string addresse)
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                var rest = db.Restaurant.Where(r => r.Address.Equals(addresse)).First();
+                Console.WriteLine("Borde for restaurant "+rest.Name);
+
+                foreach (var table in rest.TableIns)
+                {
+                    Console.WriteLine("Bord nr. "+table.Number);
+                }
+                Console.WriteLine();
+                //return tableIns.ToList();
             }
         }
 

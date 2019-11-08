@@ -486,7 +486,29 @@ namespace Resturant
                                         break;
 
                                     case "addGuest":
-                                        Console.WriteLine("Need implementation...");
+                                        //Console.WriteLine("Need implementation...");
+                                        selectAll.SelectAllPerson();
+                                        Console.WriteLine("Skriv personens navn");
+                                        var pname = Console.ReadLine();
+
+                                        var gperson = db.Person.Where(p => p.Name.Equals(pname)).FirstOrDefault();
+
+                                        
+                                        selectspecific.selectTableIns(nyrest);
+                                        Console.WriteLine("Vælg bord id:");
+
+                                        int tableid = int.Parse(Console.ReadLine());
+                                        var table = db.TableIns.Where(t => t.TableId == tableid).FirstOrDefault();
+                                        
+                                        
+                                        //selectAll.ReadWaiter();
+                                        //Console.WriteLine("Vælg waiter ved at skrive ID");
+                                        //var waiterID = int.Parse(Console.ReadLine());
+                                        //var waiter = db.Waiter.Where(w => w.WaiterId == waiterID);
+
+                                        var guest = new Guest() {Reservation = DateTime.Now};
+                                        create.addGuest(ref guest,ref gperson,ref table);
+
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
 

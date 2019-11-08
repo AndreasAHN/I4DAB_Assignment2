@@ -103,6 +103,28 @@ namespace Resturant
 
         }
 
+        public void addGuest(ref Guest guest, ref Person person, ref TableIns table)
+        {
+
+            
+            guest.TableId = table.TableId;
+            guest.FkPersonId = person.PersonId;
+            db.Guest.Add(guest);
+
+            //dish.ReviewId = review.ReviewId;
+
+            //var gd = new GuestDish();
+            //gd.Dish = dish;
+            //gd.Guest = guest;
+
+            //guest.GuestDish.Add(gd);
+
+
+            db.SaveChanges();
+
+
+        }
+
         public void addTable(ref TableIns table, ref Restaurant restaurant, ref Waiter waiter)
         {
             
