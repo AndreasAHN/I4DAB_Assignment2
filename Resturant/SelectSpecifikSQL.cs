@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using Resturant.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Resturant
 {
@@ -188,5 +189,30 @@ namespace Resturant
             return dataOut;
         }
 
+        public void selectGuestsAtRestaurant(Restaurant rest)
+        {
+            var tableGuests = db.TableIns.Include(t => t.Guest).Where(t => t.Addresse == rest.Address).ToList();
+
+            foreach (var tg in tableGuests)
+            {
+
+                if (!tg.Guest.Any())
+                {
+                    Console.WriteLine
+                       (
+                         "\t" + "Table number: " + tg.Number.ToString() + "\n" +
+                         "\t" + "Empty" + "\n"
+                        
+                       );
+                }
+                foreach (var g in tg.Guest)
+                Console.WriteLine
+                (
+                 "\t" + "Table number: " + tg.Number.ToString() + "\n" +
+                 "\t" + "Reservation: " + g.Reservation.ToString() + "\n" +
+                 "\t" + "GuestId: " + g.GuestId.ToString() + "\n"
+                );
+            }
+        }
     }
 }

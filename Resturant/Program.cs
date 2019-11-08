@@ -32,9 +32,9 @@ namespace Resturant
                         Console.Clear();
                         Console.WriteLine("Velkommen til Restaurant adminstration.");
                         Console.WriteLine("---------------------------------");
-                        Console.WriteLine("(a): Tilføj Restuarant på");
-                        Console.WriteLine("(e): Vælg eksiterende på");
-                        Console.WriteLine("(r): Vis alle resturanter");
+                        Console.WriteLine("(a): Tilføj restaurant");
+                        Console.WriteLine("(e): Vælg eksisterende restaurant");
+                        Console.WriteLine("(r): Vis alle restauranter");
                         Console.WriteLine("(x): Exit program");
                         Console.WriteLine("---------------------------------");
 
@@ -69,11 +69,11 @@ namespace Resturant
                                         Console.ReadLine();
                                     }
                                     
-                                    Console.WriteLine("Tilføjet. Tryk (i) for at tilføje ny Restaurant");
+                                    Console.WriteLine("Tilføjet. Tryk (i) for at tilføje en ny Restaurant");
                                 } while (Console.ReadLine().Equals("i"));
                                 break;
                             case "e":
-                                Console.WriteLine("Skriv addresse for at vælge resturant");
+                                Console.WriteLine("Skriv addresse for at vælge restaurant");
                                 userAddresse = Console.ReadLine();
                                 Console.WriteLine("Loading... \n");
                                 try
@@ -98,7 +98,7 @@ namespace Resturant
                                 }
                                 catch (Exception)
                                 {
-                                    Console.WriteLine("Failed loading resturant");
+                                    Console.WriteLine("Failed loading restaurant");
                                     Console.WriteLine("Tryk enter for at forsætte");
                                     Console.ReadLine();
                                 }
@@ -125,16 +125,16 @@ namespace Resturant
                             case "mainMenu":
                                 Console.Clear();
                                 Console.WriteLine("Velkommen til: " + nyrest.Name.ToString());
-                                Console.WriteLine("På addressen: " + nyrest.Name.ToString());
+                                Console.WriteLine("På addressen: " + nyrest.Address.ToString());
                                 Console.WriteLine("---------------------------------");
                                 Console.WriteLine
                                     (
                                     "0: Tilbage til main menu" + "\n"+
-                                    "1: Vis resturantens menu" + "\n" +
+                                    "1: Vis restaurantens menu" + "\n" +
                                     "2: Tilføj en dish" + "\n" +
-                                    "3: Tilføj et rewiew til en dish" + "\n" +
+                                    "3: Tilføj et review til en dish" + "\n" +
                                     "4: Få vist et review for en dish" + "\n" +
-                                    "5: Adminstraterer resturanten"
+                                    "5: Adminstraterer restauranten"
                                     );
                                 Console.WriteLine("---------------------------------");
                                 string menuInput = Console.ReadLine();
@@ -282,7 +282,7 @@ namespace Resturant
                                     case "mainMenu":
                                         Console.Clear();
                                         Console.WriteLine("Velkommen til: " + nyrest.Name.ToString());
-                                        Console.WriteLine("På addressen: " + nyrest.Name.ToString());
+                                        Console.WriteLine("På addressen: " + nyrest.Address.ToString());
                                         Console.WriteLine("---------------------------------");
                                         Console.WriteLine("Admin menu:");
                                         Console.WriteLine("---------------------------------");
@@ -296,7 +296,9 @@ namespace Resturant
                                             "5: Tilføj bord" + "\n" +
                                             "6: Vis et bord" + "\n" +
                                             "7: Tilføj en guest" + "\n" +
-                                            "8: Vis en guest"
+                                            "8: Vis en guest" + "\n" +
+                                            "9: Vis alle guests på restauranten"
+
                                             );
                                         Console.WriteLine("---------------------------------");
                                         string menuAdminInput = Console.ReadLine();
@@ -337,6 +339,9 @@ namespace Resturant
 
                                             case "8":
                                                 adminMenu = "showGuest";
+                                                break;
+                                            case "9":
+                                                adminMenu = "ShowAllGuestsAtRestaurant";
                                                 break;
 
                                             default:
@@ -493,6 +498,8 @@ namespace Resturant
                                         //try
                                         //{
                                         //    Person personBuf5 = selectspecific.selectPerson(personNr2);
+                                        //    Choose table
+                                        //    Choose review
                                         //    create.addGuest();
                                         //}
                                         //catch (Exception)
@@ -513,6 +520,7 @@ namespace Resturant
                                             Review reviewBuf = selectspecific.selectReview(nyrest)[0];
                                             TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
                                             selectspecific.selectGuest(reviewBuf, tableInsbuf);
+                                            
                                         }
                                         catch (Exception)
                                         {
@@ -525,6 +533,24 @@ namespace Resturant
                                         Console.ReadLine();
                                         adminMenu = "mainMenu";
                                         break;
+
+                                    case "ShowAllGuestsAtRestaurant":
+                                        try
+                                        {
+                                            selectspecific.selectGuestsAtRestaurant(nyrest);
+                                        }
+                                        catch (Exception)
+                                        {
+                                            Console.WriteLine("Failed loading guest");
+                                            Console.WriteLine("Tryk enter for at forsætte");
+                                            Console.ReadLine();
+                                        }
+
+                                        Console.WriteLine("Tryk enter for at forsætte");
+                                        Console.ReadLine();
+                                        adminMenu = "mainMenu";
+                                        break;
+
                                 }
                                 break;
 
