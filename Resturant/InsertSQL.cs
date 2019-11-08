@@ -10,11 +10,11 @@ using Resturant.Models;
 
 namespace Resturant
 {
-    class CreateSQL
+    class InsertSQL
     {
         private I4DAB_HandIn2Context db;
 
-        public CreateSQL(I4DAB_HandIn2Context db_)
+        public InsertSQL(I4DAB_HandIn2Context db_)
         {
             db = db_;
         }

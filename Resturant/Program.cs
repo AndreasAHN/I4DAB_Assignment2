@@ -11,7 +11,7 @@ namespace Resturant
         {
 
             I4DAB_HandIn2Context db = new I4DAB_HandIn2Context();
-            var create = new CreateSQL(db);
+            var create = new InsertSQL(db);
             var selectAll = new SelectAllSQL();
             var select = new SelectSQL();
             var selectspecific = new SelectSpecifikSQL(db);
