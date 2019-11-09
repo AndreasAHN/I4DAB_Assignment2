@@ -120,6 +120,11 @@ namespace Resturant.Models
                     .HasColumnName("name")
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Age)
+                    .HasColumnName("Age")
+                    .HasDefaultValue(0);
+
             });
 
             modelBuilder.Entity<Restaurant>(entity =>
