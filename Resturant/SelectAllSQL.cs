@@ -76,9 +76,10 @@ namespace Resturant
                         Console.WriteLine("Spiste retter:");
                         foreach (var dish in dishes)
                         {
-                            Console.Write("\tNavn: "+dish.Name);
-                            Console.Write("\tPris: " + dish.Price);
-                            Console.Write("\tType: " + dish.Type);
+                            Console.WriteLine("\tNavn: "+dish.Name);
+                            Console.WriteLine("\tPris: " + dish.Price);
+                            Console.WriteLine("\tType: " + dish.Type);
+                            Console.WriteLine("-----------------");
                         }
 
                         if (db.Review.Where(r => r.ReviewId == guest.ReviewId).Any())
@@ -150,6 +151,20 @@ namespace Resturant
             }
         }
 
+        public void selectAllTypes()
+        {
+            using (var db = new I4DAB_HandIn2Context())
+            {
+                Console.WriteLine("Restauranters typer:");
+                var rests = db.Restaurant.Select(r => r.Type).Distinct().ToList();
+                foreach (var rest in rests)
+                {
+                    Console.WriteLine("\t"+rest);
+                }
+                Console.WriteLine();
+            }
+            
+        }
         public void SelectAllTabletoRestaurant(string addresse)
         {
             using (var db = new I4DAB_HandIn2Context())

@@ -199,6 +199,14 @@ namespace Resturant
             Console.WriteLine("Navn: "+person.Name);
             Console.WriteLine();
         }
+
+        public Dish selectADishAtRestaurant(ref Restaurant rest, string name)
+        {
+            var addresse = rest.Address;
+            var dishesid = db.RestaurantDish.Where(r => r.Addresse.Equals(addresse));
+            var dishes = from rd in dishesid select rd.Dish;
+            return db.Dish.Where(d => d.Name.Equals(name)).First();
+        }
         public void selectGuestsAtRestaurant(Restaurant rest)
         {
             var tableGuests = db.TableIns.Include(t => t.Guest).Where(t => t.Addresse == rest.Address).ToList();

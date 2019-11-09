@@ -156,13 +156,17 @@ namespace Resturant
                         var dishes = from dn in dishnumbers select dn.Dish;
                         foreach (var dish in dishes)
                         {
-                            Console.Write(dish.Type+", ");
+                            Console.Write(dish.Name+", ");
                         }
                         Console.WriteLine();
 
                         Console.WriteLine("\t\tReview: ");
-                        var review = db.Review.Where(r => r.ReviewId == guest.ReviewId).First();
-                        Console.WriteLine("\t\t"+review.Text+", "+review.Stars);
+                        if (db.Review.Where(r => r.ReviewId == guest.ReviewId).Any())
+                        {
+                            var review = db.Review.Where(r => r.ReviewId == guest.ReviewId).First();
+                            Console.WriteLine("\t\t" + review.Text + ", " + review.Stars+" stjerner");
+                        }
+                        Console.WriteLine();
 
                     }
                 }

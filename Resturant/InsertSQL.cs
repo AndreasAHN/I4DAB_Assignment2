@@ -32,6 +32,13 @@ namespace Resturant
             
         }
 
+        public void addReview(ref Review review, ref Restaurant restaurant)
+        {
+            review.AddresseNavigation = restaurant;
+
+            db.Review.Add(review);
+            db.SaveChanges();
+        }
         public void addReview(ref Review review, ref Restaurant restaurant, ref Dish dish)
         {
                 review.Dish = dish;
@@ -84,7 +91,7 @@ namespace Resturant
         public void addGuest(ref Guest guest, ref Person person, ref TableIns table, ref Review review)
         {
 
-            guest.ReviewId = review.ReviewId;
+                guest.ReviewId = review.ReviewId;
                 guest.TableId = table.TableId;
                 guest.FkPersonId = person.PersonId;
                 db.Guest.Add(guest);
@@ -111,20 +118,21 @@ namespace Resturant
             guest.FkPersonId = person.PersonId;
             db.Guest.Add(guest);
 
-            //dish.ReviewId = review.ReviewId;
-
-            //var gd = new GuestDish();
-            //gd.Dish = dish;
-            //gd.Guest = guest;
-
-            //guest.GuestDish.Add(gd);
-
 
             db.SaveChanges();
 
 
         }
 
+        public void addDishToGuest(ref Dish dish, ref Guest guest)
+        {
+            var gd = new GuestDish();
+            gd.DishId = dish.DishId;
+            gd.GuestId = guest.GuestId;
+            db.GuestDish.Add(gd);
+
+            db.SaveChanges();
+        }
         public void addTable(ref TableIns table, ref Restaurant restaurant, ref Waiter waiter)
         {
             

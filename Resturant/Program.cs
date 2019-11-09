@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Resturant.Models;
 
@@ -35,6 +37,7 @@ namespace Resturant
                         Console.WriteLine("(a): Tilføj restaurant");
                         Console.WriteLine("(e): Vælg eksisterende restaurant");
                         Console.WriteLine("(r): Vis alle restauranter");
+                        Console.WriteLine("(t): Vis alle restauranter af type");
                         Console.WriteLine("(x): Exit program");
                         Console.WriteLine("---------------------------------");
 
@@ -111,6 +114,25 @@ namespace Resturant
                                 runner = false;
                                 break;
 
+                            case "t":
+                                Console.WriteLine("Indlæser... \n");
+                                try
+                                {
+                                    Console.Clear();
+                                    selectAll.selectAllTypes();
+                                    Console.Write("Skriv en type: ");
+                                    string type = Console.ReadLine();
+                                    select.getAllWithType(type);
+                                }
+                                catch (Exception)
+                                {
+                                    Console.WriteLine("Fejlede Indlæser restaurant");
+                                    Console.WriteLine("Tryk enter for at forsætte");
+                                    Console.ReadLine();
+                                }
+                                Console.WriteLine("Tryk enter for at forsætte");
+                                Console.ReadLine();
+                                break;
                             default:
                                 Console.WriteLine("Forkert indtastning");
                                 Console.WriteLine("Tryk enter for at forsætte");
@@ -233,9 +255,9 @@ namespace Resturant
                                     string name = Console.ReadLine();
                                     var dish = db.Dish.Where(d => d.Name.Equals(name)).FirstOrDefault();
                                     Console.WriteLine("Udført");
-                                    Console.Write("Skriv tekst");
+                                    Console.Write("Skriv tekst ");
                                     string tekst = Console.ReadLine();
-                                    Console.Write("Skriv antal stjerner");
+                                    Console.Write("Skriv antal stjerner ");
                                     int stars = int.Parse(Console.ReadLine());
                                     var review = new Review() { Text = tekst, Stars = stars };
 
@@ -508,15 +530,37 @@ namespace Resturant
                                         int tableid = int.Parse(Console.ReadLine());
                                         var table = db.TableIns.Where(t => t.TableId == tableid).FirstOrDefault();
                                         
+                                        select.SelectRestaurantMenu2(nyrest.Address);
+
+                                        var guest = new Guest() { Reservation = DateTime.Now };
+                                        var dishes = new List<Dish>();
+                                        do
+                                        {
+                                            Console.WriteLine("Skriv navn på valgte ret");
+                                            var dishName = Console.ReadLine();
+                                            dishes.Add(selectspecific.selectADishAtRestaurant(ref nyrest, dishName));
+                                            
+                                            Console.WriteLine("Vil du tilføje endnu en ret? Skriv (j) for ja; (n) for nej.");
+                                        } while (Console.ReadLine().Equals("j"));
+
+                                        Console.WriteLine("Skrive review tekst");
+                                        var text = Console.ReadLine();
+
+                                        Console.WriteLine("Skriv tal for antal stjerner (1-6)");
+                                        int stars = int.Parse(Console.ReadLine());
+
+                                        var review = new Review(){Text = text,Stars = stars};
                                         
-                                        //selectAll.ReadWaiter();
-                                        //Console.WriteLine("Vælg waiter ved at skrive ID");
-                                        //var waiterID = int.Parse(Console.ReadLine());
-                                        //var waiter = db.Waiter.Where(w => w.WaiterId == waiterID);
+                                        create.addReview(ref review, ref nyrest);
 
-                                        var guest = new Guest() {Reservation = DateTime.Now};
-                                        create.addGuest(ref guest,ref gperson,ref table);
+                                        create.addGuest(ref guest,ref gperson,ref table,ref review);
 
+                                        foreach (var dish in dishes)
+                                        {
+                                            var dish_ = dish;
+                                            create.addDishToGuest(ref dish_, ref guest);
+                                        }
+                                        
                                         //Console.WriteLine("Tryk enter for at forsætte");
                                         //Console.ReadLine();
 
@@ -544,7 +588,7 @@ namespace Resturant
                                         adminMenu = "mainMenu";
                                         break;
 
-                                    case "showGuest": //Mullig fejl
+                                    case "showGuest":
                                         try
                                         {
                                             selectAll.SelectAllGuestFromRestaurant(nyrest.Address);
@@ -572,7 +616,8 @@ namespace Resturant
                                     case "ShowAllGuestsAtRestaurant":
                                         try
                                         {
-                                            selectspecific.selectGuestsAtRestaurant(nyrest);
+                                            select.getReviewsBasedOnTable(nyrest.Address);
+                                            //selectspecific.selectGuestsAtRestaurant(nyrest);
                                         }
                                         catch (Exception)
                                         {
