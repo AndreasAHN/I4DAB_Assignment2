@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.Reflection;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions.Internal;
+using Microsoft.EntityFrameworkCore.Scaffolding.Internal;
 using Resturant.Models;
 
 namespace Resturant
@@ -31,6 +33,7 @@ namespace Resturant
             }
         }
 
+        
         public List<Review> SelectAllReview()
         {
             using (var db = new I4DAB_HandIn2Context())
@@ -51,13 +54,45 @@ namespace Resturant
             }
         }
 
-        public List<Guest> SelectAllGuest()
+        public List<Guest> SelectAllGuestFromRestaurant(string addresse)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
-                var guest = db.Guest.ToList();
+                Console.WriteLine("Gæster på bordene i restauranten:");
+                var tables = db.TableIns.Where(t => t.Addresse.Equals(addresse));
 
-                return guest.ToList();
+                var guestsCollection = from t in tables select t.Guest;
+
+                foreach (var guests in guestsCollection)
+                {
+                    foreach (var guest in guests)
+                    {
+                        Console.WriteLine("ID: "+guest.GuestId);
+                        var person = db.Person.Where(p => p.PersonId == guest.FkPersonId).First();
+                        Console.WriteLine("Navn: "+person.Name);
+
+                        var dishnumbers = db.GuestDish.Where(d => d.GuestId == guest.GuestId);
+                        var dishes = from dn in dishnumbers select dn.Dish;
+                        Console.WriteLine("Spiste retter:");
+                        foreach (var dish in dishes)
+                        {
+                            Console.Write("\tNavn: "+dish.Name);
+                            Console.Write("\tPris: " + dish.Price);
+                            Console.Write("\tType: " + dish.Type);
+                        }
+
+                        if (db.Review.Where(r => r.ReviewId == guest.ReviewId).Any())
+                        {
+                            var review = db.Review.Where(r => r.ReviewId == guest.ReviewId).First();
+                            Console.WriteLine("Review: "+review.Text);
+                            Console.WriteLine("Stjerner: "+review.Stars);
+                            Console.WriteLine();
+                        }
+
+                        Console.WriteLine();
+                    }
+                }
+                return null;
             }
         }
 
@@ -71,9 +106,17 @@ namespace Resturant
 
                 foreach (var person in persons)
                 {
-                    Console.WriteLine("Navn: ");
+                    Console.Write("Navn: ");
                     Console.WriteLine(person.Name);
+                    Console.Write("ID: ");
+                    Console.WriteLine(person.PersonId);
+                    if (db.Waiter.Where(w => w.PersonId == person.PersonId).Any())
+                        Console.WriteLine("Er waiter");
+                    if(db.Guest.Where(g => g.FkPersonId == person.PersonId).Any())
+                        Console.WriteLine("Er gæst");
+                    Console.WriteLine();
                 }
+                
                 Console.WriteLine();
 
                 return persons.ToList();

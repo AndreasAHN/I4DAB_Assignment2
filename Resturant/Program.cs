@@ -290,11 +290,11 @@ namespace Resturant
                                             (
                                             "0: Tilbage til resturant menu" + "\n" +
                                             "1: Tilføj en person" + "\n" +
-                                            "2: Vis en person" + "\n" +
+                                            "2: Vis personer" + "\n" +
                                             "3: Tilføj en waiter" + "\n" +
                                             "4: Vis en waiter" + "\n" +
                                             "5: Tilføj bord" + "\n" +
-                                            "6: Vis et bord" + "\n" +
+                                            "6: Vis borde" + "\n" +
                                             "7: Tilføj en guest" + "\n" +
                                             "8: Vis en guest" + "\n" +
                                             "9: Vis alle guests på restauranten"
@@ -376,12 +376,13 @@ namespace Resturant
                                         break;
 
                                     case "showPerson":
-                                        Console.WriteLine("Skriv id for personen:");
-                                        int idPerson = int.Parse(Console.ReadLine());
-
+                                        //Console.WriteLine("Skriv id for personen:");
+                                        //int idPerson = int.Parse(Console.ReadLine());
+                                        
                                         try
                                         {
-                                            selectspecific.selectPerson(idPerson);
+                                            selectAll.SelectAllPerson();
+                                            //selectspecific.selectPerson(idPerson);
                                         }
                                         catch (Exception)
                                         {
@@ -399,6 +400,8 @@ namespace Resturant
                                         Console.WriteLine("Skriv tjernerens salary:");
                                         int salaryWaiter = int.Parse(Console.ReadLine());
                                         Waiter waiterBuf = new Waiter() { Salary = salaryWaiter };
+
+                                        selectAll.SelectAllPerson();
 
                                         Console.WriteLine("Skriv personens id, som tjerneren hører til :");
                                         int personWaiter = int.Parse(Console.ReadLine());
@@ -421,6 +424,8 @@ namespace Resturant
                                         break;
 
                                     case "showWaiter":
+                                        selectAll.SelectAllPerson();
+
                                         Console.WriteLine("Skriv tjernerens person id:");
                                         int waiterPersonNr = int.Parse(Console.ReadLine());
                                         
@@ -442,9 +447,12 @@ namespace Resturant
                                         break;
 
                                     case "addTable":
+                                        selectspecific.selectTableIns(nyrest);
                                         Console.WriteLine("Skriv nummeret bordet skal have:");
                                         int tableNr = int.Parse(Console.ReadLine());
                                         TableIns tableBuf = new TableIns() { Number = tableNr };
+
+                                        selectAll.SelectAllPerson();
 
                                         Console.WriteLine("Skriv tjernerens person id:");
                                         int waiterPersonNr1 = int.Parse(Console.ReadLine());
@@ -539,6 +547,8 @@ namespace Resturant
                                     case "showGuest": //Mullig fejl
                                         try
                                         {
+                                            selectAll.SelectAllGuestFromRestaurant(nyrest.Address);
+
                                             Console.WriteLine("Skriv id for gæst");
                                             int guestID = int.Parse(Console.ReadLine());
                                             selectspecific.selectAGuest(guestID);
