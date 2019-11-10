@@ -19,27 +19,6 @@ namespace Resturant
             }
         }
 
-        public void SelectRestaurantMenu(string address)
-        {
-            using (var db = new I4DAB_HandIn2Context())
-            {
-                foreach (var rest in db.Restaurant)
-                {
-                    if (rest.Address == address)
-                    {
-                        Console.WriteLine("Restaurant stjerner:{0:0.00}", ReviewAverage(address));
-                        Console.WriteLine("Menu:");
-                        foreach (var dish in rest.RestaurantDish)
-                        {
-                            Console.WriteLine("Type:{0}", dish.Dish.Type);
-                            Console.WriteLine("Pris:{0:0.00}", dish.Dish.Price);
-
-                          
-                        }
-                    }
-                }
-            }
-        }
 
 
         //view 2. (restaurant addr) -> menu - dishes, price, avg rating
