@@ -6,10 +6,11 @@ namespace Resturant.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Age",
-                table: "Person",
-                defaultValue: 0);
+
+            //migrationBuilder.AddColumn<int>(
+            //    name: "Age",
+            //    table: "Person",
+            //    defaultValue: 0);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

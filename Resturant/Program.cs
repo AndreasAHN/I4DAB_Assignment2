@@ -319,7 +319,7 @@ namespace Resturant
                                             "6: Vis borde" + "\n" +
                                             "7: Tilføj en guest" + "\n" +
                                             "8: Vis en guest" + "\n" +
-                                            "9: Vis alle guests på restauranten"
+                                            "9: Vis alle guests, borde og reviews på restauranten"
 
                                             );
                                         Console.WriteLine("---------------------------------");
