@@ -398,13 +398,10 @@ namespace Resturant
                                         break;
 
                                     case "showPerson":
-                                        //Console.WriteLine("Skriv id for personen:");
-                                        //int idPerson = int.Parse(Console.ReadLine());
                                         
                                         try
                                         {
                                             selectAll.SelectAllPerson();
-                                            //selectspecific.selectPerson(idPerson);
                                         }
                                         catch (Exception)
                                         {
@@ -419,7 +416,7 @@ namespace Resturant
                                         break;
 
                                     case "addWaiter":
-                                        Console.WriteLine("Skriv tjernerens salary:");
+                                        Console.WriteLine("Skriv tjenerens salary:");
                                         int salaryWaiter = int.Parse(Console.ReadLine());
                                         Waiter waiterBuf = new Waiter() { Salary = salaryWaiter };
 
@@ -481,14 +478,16 @@ namespace Resturant
 
                                         try
                                         {
+
                                             Person personBuf4 = selectspecific.selectPerson(waiterPersonNr1);
-                                            var waiterBuf1 = selectspecific.selectWaiter(personBuf4);
-                                            Waiter waiterBuf2 = waiterBuf1[0];
+
+                                            Waiter waiterBuf2 = selectspecific.selectWaiter(personBuf4);
+                                            
                                             create.addTable(ref tableBuf, ref nyrest, ref waiterBuf2);
                                         }
                                         catch (Exception)
                                         {
-                                            Console.WriteLine("Fejlede save table");
+                                            Console.WriteLine("Fejlet gemt bord. Var personen tjener?");
                                             Console.WriteLine("Tryk enter for at forsætte");
                                             Console.ReadLine();
                                         }
@@ -516,7 +515,6 @@ namespace Resturant
                                         break;
 
                                     case "addGuest":
-                                        //Console.WriteLine("Need implementation...");
                                         selectAll.SelectAllPerson();
                                         Console.WriteLine("Skriv personens navn");
                                         var pname = Console.ReadLine();
@@ -560,28 +558,7 @@ namespace Resturant
                                             var dish_ = dish;
                                             create.addDishToGuest(ref dish_, ref guest);
                                         }
-                                        
-                                        //Console.WriteLine("Tryk enter for at forsætte");
-                                        //Console.ReadLine();
-
-                                        //Console.WriteLine("Skriv person id:");
-                                        //int personNr2 = int.Parse(Console.ReadLine());
-
-                                        //var guest = new Guest() { Reservation = DateTime.Now };
-
-                                        //try
-                                        //{
-                                        //    Person personBuf5 = selectspecific.selectPerson(personNr2);
-                                        //    Choose table
-                                        //    Choose review
-                                        //    create.addGuest();
-                                        //}
-                                        //catch (Exception)
-                                        //{
-                                        //    Console.WriteLine("Fejlede save guest");
-                                        //    Console.WriteLine("Tryk enter for at forsætte");
-                                        //    Console.ReadLine();
-                                        //}
+                                
 
                                         Console.WriteLine("Tryk enter for at forsætte");
                                         Console.ReadLine();
@@ -596,9 +573,6 @@ namespace Resturant
                                             Console.WriteLine("Skriv id for gæst");
                                             int guestID = int.Parse(Console.ReadLine());
                                             selectspecific.selectAGuest(guestID);
-                                            //Review reviewBuf = selectspecific.selectReview(nyrest)[0];
-                                            //TableIns tableInsbuf = selectspecific.selectTableIns(nyrest)[0];
-                                            //selectspecific.selectGuest(reviewBuf, tableInsbuf);
                                             
                                         }
                                         catch (Exception)
@@ -617,7 +591,6 @@ namespace Resturant
                                         try
                                         {
                                             select.getReviewsBasedOnTable(nyrest.Address);
-                                            //selectspecific.selectGuestsAtRestaurant(nyrest);
                                         }
                                         catch (Exception)
                                         {
@@ -651,95 +624,8 @@ namespace Resturant
                 }
             }
 
-
-
-
-
-            
-
-
-            //////////////////Menu : 
-
-            
-
-            
-
-            //Console.ReadLine();
-
-            //var dish = new Dish() {Price = 40, Type = "Dessert",Name = "Lasagne"};
-
-            //var rest = new Restaurant(){Address = "Randersvej 42",Name = "Restaurant2",Type = "Buffet"};
-            //var rest = selectspecific.getRestaurant("Randersvej 42");
-            //var review = new Review() {Text = "Det var godt", Stars = 3};
-            //var review2 = new Review() { Text = "Det var ok", Stars = 2};
-
-            //create.addRestaurant(ref rest);
-
-            
-
-            //create.addDish(ref dish, ref rest);
-            //create.addReview(ref review, ref rest,ref dish);
-            //create.addReview(ref review2, ref rest,ref dish);
-
-            //select.getAllWithType("Buffet");
-
-            //create.addPerson(ref person);
-            //create.addWaiter(ref waiter,ref person);
-            //create.addTable(ref table,ref rest,ref waiter);
-            //create.addGuest(ref guest,ref person,ref table,ref review);
-            
-
-            //select.getReviewsBasedOnTable("Randersvej 42");
-
-
-            //select.SelectRestaurantMenu2("Randersvej 42");
-            //Console.ReadLine();
-            
-            //SelectAllSQL selectAllSQL = new SelectAllSQL();
-            //var data = selectAllSQL.SelectAllResturant();
-            //Console.WriteLine(data[0].ToString());
         }
 
 
-
-        public void test()
-        {
-            //var person = new Person() { Name = "Henrik" };
-            //var waiter = new Waiter() { Salary = 150 };
-            //var table = new TableIns() { Number = 7 };
-            //var guest = new Guest() { Reservation = DateTime.Now };
-            //var dish = new Dish() { Price = 40, Type = "Dessert", Name = "Lasagne" };
-
-            ////var rest = new Restaurant(){Address = "Randersvej 42",Name = "Restaurant2",Type = "Buffet"};
-            //var rest = selectspecific.getRestaurant("Randersvej 42");
-            //var review = new Review() { Text = "Det var godt", Stars = 3 };
-            //var review2 = new Review() { Text = "Det var ok", Stars = 2 };
-
-            ////create.addRestaurant(ref rest);
-
-
-
-            //create.addDish(ref dish, ref rest);
-            //create.addReview(ref review, ref rest, ref dish);
-            //create.addReview(ref review2, ref rest, ref dish);
-
-            //select.getAllWithType("Buffet");
-
-            //create.addPerson(ref person);
-            //create.addWaiter(ref waiter, ref person);
-            //create.addTable(ref table, ref rest, ref waiter);
-            //create.addGuest(ref guest, ref person, ref table, ref review);
-
-
-            //select.getReviewsBasedOnTable("Randersvej 42");
-
-
-            //select.SelectRestaurantMenu2("Randersvej 42");
-            //Console.ReadLine();
-
-            //SelectAllSQL selectAllSQL = new SelectAllSQL();
-            //var data = selectAllSQL.SelectAllResturant();
-            //Console.WriteLine(data[0].ToString());
-        }
     }
 }

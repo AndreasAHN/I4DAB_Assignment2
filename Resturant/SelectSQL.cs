@@ -34,13 +34,7 @@ namespace Resturant
                             Console.WriteLine("Type:{0}", dish.Dish.Type);
                             Console.WriteLine("Pris:{0:0.00}", dish.Dish.Price);
 
-                            //var rest = db.Restaurant.Where(r => r.Address.Equals(address)).First();
-
-                            /*foreach (var dish in rest.RestaurantDish)
-                            {
-                                Console.WriteLine("Type:{0}", dish.Dish.Type);
-                                Console.WriteLine("Price:{0:0.00}", dish.Dish.Price);
-                            }*/
+                          
                         }
                     }
                 }
@@ -48,16 +42,13 @@ namespace Resturant
         }
 
 
-        //double ReviewAverage(string address)
-
+        //view 2. (restaurant addr) -> menu - dishes, price, avg rating
         public void SelectRestaurantMenu2(string address)
         {
             using (var db = new I4DAB_HandIn2Context())
             {
                 var rest = db.Restaurant.Where(r => r.Address.Equals(address));
                 Console.WriteLine("Menu for restaurant "+rest.First().Name+":");
-                //var rd = from redi in RestaurantDish
-                //var rd = rest.RestaurantDish.Where(r => r.Addresse.Equals(address));
                 var dishesid = db.RestaurantDish.Where(r => r.Addresse.Equals(address));
                 var dishes = from rd in dishesid select rd.Dish;
                 
@@ -69,18 +60,6 @@ namespace Resturant
 
                     var reviews = db.Review.Where(r => r.DishId == dish.DishId);
                     Console.WriteLine("\t"+reviews.Average(r => r.Stars)+" stjerner");
-                    //foreach (var review in dish.Review)
-                    //{
-                    //    Console.WriteLine(review.DishId+" "+review.Stars);
-                    //}
-
-                    //Console.WriteLine("\t"+dish.Review.FirstOrDefault());
-
-                    //Console.WriteLine("\t"+dish.Review.Average(r => r.Stars));
-
-                    //var reviewsid = db.Dish.Where(r => r.ReviewId =)
-                    //var reviews = from r in reviewsid select r.
-                    //Console.WriteLine("\tGennemsnit rating: "+reviews.Average(s => s.Stars));
                     Console.WriteLine();
                 }
 
@@ -109,6 +88,7 @@ namespace Resturant
         }
 
 
+        //view 1. (type) -> list all restaurants with give type and their average rating + latest 5 review text
         public void getAllWithType(string type)
         {
             using (var db = new I4DAB_HandIn2Context())
@@ -133,6 +113,7 @@ namespace Resturant
         }
 
 
+        //View 3. (restaurant addr) -> information about guests reviews for dishes based on table
         public void getReviewsBasedOnTable(string addresse)
         {
             using (var db = new I4DAB_HandIn2Context())

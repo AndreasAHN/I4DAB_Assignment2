@@ -96,24 +96,29 @@ namespace Resturant
         }
 
 
-        public List<Waiter> selectWaiter(Person person)
+        public Waiter selectWaiter(Person person)
         {
-            List<Waiter> dataOutPut = new List<Waiter>();
-
-            dataOutPut = db.Waiter.Where(waiterOut => waiterOut.PersonId == person.PersonId).ToList();
-
-            for (int i = 0; i < dataOutPut.Count; i++)
-            {
+            var waiter = db.Waiter.Where(w => w.PersonId == person.PersonId).First();
                 Console.WriteLine
                 (
-                    "\t" + "WaiterId: " + dataOutPut[i].WaiterId.ToString() + "\n" +
-                    "\t" + "Salary: " + dataOutPut[i].Salary.ToString() + "\n"
+                    "\t" + "WaiterId: " + waiter.WaiterId.ToString() + "\n" +
+                    "\t" + "Salary: " + waiter.Salary.ToString() + "\n"
                 );
-            }
 
-            return dataOutPut.ToList();
+            return waiter;
         }
 
+        public Waiter selectWaiter(int personID)
+        {
+            var waiter = db.Waiter.Where(w => w.PersonId == personID).First();
+            Console.WriteLine
+            (
+                "\t" + "WaiterId: " + waiter.WaiterId.ToString() + "\n" +
+                "\t" + "Salary: " + waiter.Salary.ToString() + "\n"
+            );
+
+            return waiter;
+        }
 
         public List<WaiterTableIns> selectWaiterTableIns(Waiter waiter, TableIns tableIns)
         {

@@ -25,8 +25,6 @@ namespace Resturant
         {
             
                 string addresse = restaurant.Address;
-                //if (db.Restaurant.Any(r => r.Address == addresse))
-                    //return;
                 db.Restaurant.Add(restaurant);
                 db.SaveChanges();
             
@@ -55,7 +53,6 @@ namespace Resturant
                 db.Dish.Add(dish);
                 db.SaveChanges();
 
-                //var guest2 = db.Guest.Take(1).First();
                 var gd = new GuestDish();
                 gd.Dish = dish;
                 gd.Guest = guest;
@@ -74,12 +71,9 @@ namespace Resturant
             db.Dish.Add(dish);
             db.SaveChanges();
 
-            //var guest2 = db.Guest.Take(1).First();
             var rd = new RestaurantDish();
             rd.Dish = dish;
             rd.AddresseNavigation = restaurant;
-            //rd.Addresse = restaurant.Address;
-            //rd.DishId = dish.DishId;
             db.RestaurantDish.Add(rd);
             restaurant.RestaurantDish.Add(rd);
             dish.RestaurantDish.Add(rd);
@@ -95,15 +89,6 @@ namespace Resturant
                 guest.TableId = table.TableId;
                 guest.FkPersonId = person.PersonId;
                 db.Guest.Add(guest);
-
-                //dish.ReviewId = review.ReviewId;
-
-                //var gd = new GuestDish();
-                //gd.Dish = dish;
-                //gd.Guest = guest;
-
-                //guest.GuestDish.Add(gd);
-
                
                 db.SaveChanges();
 
@@ -152,14 +137,8 @@ namespace Resturant
 
         public void addWaiter(ref Waiter waiter, ref Person person)
         {
-            waiter.PersonId = person.PersonId;
-
-                //var waiterTable = new WaiterTableIns();
-                //waiterTable.TableId = table.TableId;
-                //waiterTable.WaiterId = waiter.WaiterId;
-
+                waiter.PersonId = person.PersonId;
                 db.Waiter.Add(waiter);
-                //db.WaiterTableIns.Add(waiterTable);
                 db.SaveChanges();
 
         }

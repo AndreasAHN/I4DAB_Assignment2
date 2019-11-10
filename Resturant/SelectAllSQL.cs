@@ -177,7 +177,6 @@ namespace Resturant
                     Console.WriteLine("Bord nr. "+table.Number);
                 }
                 Console.WriteLine();
-                //return tableIns.ToList();
             }
         }
 
